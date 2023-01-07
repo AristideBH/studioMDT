@@ -2,11 +2,12 @@
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 	import DataNumber from '$lib/components/items/DataNumber.svelte';
 	import PanelItem from '$lib/components/items/PanelItem.svelte';
+	import PanelWrapper from '$lib/components/items/PanelWrapper.svelte';
 
 	import { news } from '$lib/news';
 </script>
 
-<!-- ! HERO -->
+<!-- * HERO -->
 <section class="hero">
 	<img src="" alt="" />
 
@@ -22,7 +23,7 @@
 	<a href="#products">Voir plus</a>
 </section>
 
-<!-- ! PRODUCTS -->
+<!-- * PRODUCTS -->
 <section id="products" class="container">
 	<span class="grid">
 		<code class="3D--wrapper">3D Object</code>
@@ -38,7 +39,7 @@
 	</span>
 </section>
 
-<!-- ! RSE -->
+<!-- * RSE -->
 <section id="rse" class="container">
 	<h2>M2i Group annonce ses objectifs</h2>
 	<p>
@@ -50,14 +51,14 @@
 	<img src="/favicon.png" alt="" />
 </section>
 
-<!-- ! DATA -->
+<!-- * DATA -->
 <section id="data" class="container flex:col">
 	<div class="title flex:col">
 		<h2>Quelques chiffres</h2>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus eaque velit veniam animi
 			maiores vitae, suscipit impedit, distinctio ab dolorem repudiandae illum totam recusandae
-			laborum! Minima officia voluptatibus amet corporis?
+			laborum* Minima officia voluptatibus amet corporis?
 		</p>
 	</div>
 
@@ -67,16 +68,16 @@
 		<DataNumber options={{ data: 60, ico: '/favicon.png', subtitle: 'text 3' }} />
 	</ul>
 
-	<a href="/" class="mx:auto"> découvrir le reste</a>
+	<a href="/" class="mx:auto" role="button"> découvrir le reste</a>
 </section>
 
-<!-- ! NEWS -->
-<section id="news" class="container ">
-	{#each news as actu, i}
-		<PanelItem {i} {actu} />
-	{/each}
-
-	<a href="/">Voir toutes les actus</a>
+<!-- * NEWS -->
+<section id="news" class="container">
+	<span class="flex:col">
+		<h2>Actualités</h2>
+		<PanelWrapper {news} />
+		<a class="mx:auto" role="button" href="/">Voir toutes les actus</a>
+	</span>
 </section>
 
 <style lang="scss">
@@ -84,6 +85,7 @@
 		--grid-spacing-horizontal: 3rem;
 		--grid-spacing-vertical: 1.5rem;
 	}
+
 	#data .title {
 		align-items: center;
 		text-align: center;
@@ -92,9 +94,5 @@
 		p {
 			max-width: max(640px, 65vh);
 		}
-	}
-
-	section:last-of-type {
-		min-height: fit-content;
 	}
 </style>

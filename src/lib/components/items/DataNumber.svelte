@@ -7,8 +7,8 @@
 </script>
 
 <li>
-	<span>{options.data}</span>
 	<img src={options?.ico} alt="{options.data} {options.subtitle}" />
+	<span>{options.data}</span>
 	<p>
 		{options.subtitle}
 	</p>
@@ -23,7 +23,7 @@
 	}
 
 	span {
-		font-size: 2rem;
+		font-size: 2.5rem;
 		font-weight: bolder;
 	}
 </style>

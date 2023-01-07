@@ -11,7 +11,13 @@ body {
 }
 
 section {
-	min-height: 65vh;
+	--spacing: 3rem;
+
+	&:last-of-type {
+		--spacing: 1rem;
+	}
+
+	// min-height: 65vh;
 }
 
 h2 {

@@ -1,4 +1,4 @@
-<button>Contact</button>
+<button class={$$props.class ?? ''}>Contact</button>
 
 <style>
 	button {

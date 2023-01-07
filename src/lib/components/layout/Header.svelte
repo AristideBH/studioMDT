@@ -2,48 +2,41 @@
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 </script>
 
-<header>
-	<span class="container">
-		<a href="/">
-			<img src="/favicon.png" alt="" />
-		</a>
+<header class="container-fluid">
+	<a href="/">
+		<img src="/favicon.png" alt="" />
+	</a>
 
-		<nav>
-			<ul>
-				<li><a href="/qui-sommes-nous">Qui sommes-nous ?</a></li>
-				<li><a href="/">M2i Biocontrol</a></li>
-				<li><a href="/">M2i CDMO</a></li>
-				<li><a href="/">Commander</a></li>
-			</ul>
-		</nav>
+	<nav>
+		<ul>
+			<li><a href="/qui-sommes-nous">Qui sommes-nous ?</a></li>
+			<li><a href="/">M2i Biocontrol</a></li>
+			<li><a href="/">M2i CDMO</a></li>
+			<li><a href="/">Commander</a></li>
+		</ul>
+	</nav>
 
-		<ContactBtn />
+	<ContactBtn class="contrast outline " />
 
-		<label for="langSwitch">
-			<span>FR / EN</span>
-			<input type="checkbox" name="langSwitch" id="langSwitch" />
-		</label>
-	</span>
+	<label for="langSwitch" class="flex:col">
+		<!-- <span>FR / EN</span> -->
+		<input type="checkbox" name="langSwitch" id="langSwitch" role="switch" />
+	</label>
 </header>
 
 <style lang="scss">
 	header {
+		backdrop-filter: blur(15px);
 		position: sticky;
 		top: 0;
 		background-color: var(--modal-overlay-background-color);
 		margin-bottom: 2rem;
 
-		& > span {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			gap: 1.5rem;
-			padding: 1.5rem 0;
-
-			ul {
-				margin-bottom: 0;
-			}
-		}
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.5rem;
+		padding-block: 1rem;
 	}
 
 	img {
@@ -56,6 +49,17 @@
 		ul {
 			display: flex;
 			gap: 1rem;
+			margin-bottom: 0;
+		}
+	}
+
+	label {
+		align-items: start;
+		justify-content: center;
+		gap: 0.25em;
+
+		span {
+			font-size: 10px;
 		}
 	}
 </style>
