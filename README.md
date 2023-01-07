@@ -28,4 +28,4 @@ You can preview the production build with `npm run preview`.
 
 Using your GitHub account with Vercel's free hosting service allows for a quick staging and production deployement to live url.
 
-> Preparing docs for Vercel usage
+> Preparing docs for Vercel usage...
