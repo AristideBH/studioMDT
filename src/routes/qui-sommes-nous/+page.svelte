@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container ">
 	<h2>About</h2>
 
 	<p>
@@ -6,4 +6,4 @@
 		perspiciatis, possimus necessitatibus magni suscipit commodi quibusdam vero itaque mollitia
 		culpa voluptatem inventore odio officia sunt nulla ea?
 	</p>
-</div>
+</section>

@@ -33,8 +33,9 @@
 		align-items: stretch;
 		text-align: end;
 		justify-content: center;
+		color: var(--muted-color);
 		&:hover {
-			color: var(--primary-inverse);
+			color: var(--color);
 		}
 
 		&.open {
@@ -57,7 +58,7 @@
 		flex-direction: column;
 		align-items: flex-start;
 		text-align: start;
-		background-color: var(--muted-border-color);
+		background-color: var(--code-background-color);
 		padding: 0.85rem 1.5rem 1.5rem;
 
 		img {

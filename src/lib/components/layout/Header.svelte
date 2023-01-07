@@ -4,7 +4,7 @@
 
 <header class="container-fluid">
 	<a href="/">
-		<img src="/favicon.png" alt="" />
+		<img src="/logo-white.png" alt="" />
 	</a>
 
 	<nav>
@@ -30,26 +30,32 @@
 		position: sticky;
 		top: 0;
 		background-color: var(--modal-overlay-background-color);
-		margin-bottom: 2rem;
+		// margin-bottom: 2rem;
+		z-index: 5;
 
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		gap: 1.5rem;
-		padding-block: 1rem;
+		padding-block: var(--padding-header);
 	}
 
 	img {
-		max-height: 68px;
+		height: var(--logo-height);
 	}
 
 	nav {
 		margin-right: auto;
+		margin-left: auto;
 
 		ul {
 			display: flex;
 			gap: 1rem;
 			margin-bottom: 0;
+		}
+		a {
+			font-size: 0.9rem;
+			--color: var(--primary-inverse);
 		}
 	}
 

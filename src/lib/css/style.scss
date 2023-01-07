@@ -2,6 +2,9 @@
 
 :root {
 	scroll-behavior: smooth;
+	--logo-height: 3.75rem;
+	--padding-header: 0.8rem;
+	--header-height: calc(2 * var(--padding-header) + var(--logo-height));
 }
 
 body {
@@ -11,7 +14,11 @@ body {
 }
 
 section {
-	--spacing: 3rem;
+	--spacing: 2rem;
+
+	&:first-of-type {
+		padding-top: 2rem;
+	}
 
 	&:last-of-type {
 		--spacing: 1rem;
