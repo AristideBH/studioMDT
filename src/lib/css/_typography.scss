@@ -1,0 +1,18 @@
+@use 'sass:math';
+
+@function fluid($minFontSize, $maxFontSize, $minWidth, $maxWidth) {
+	$slope: calc(($maxFontSize - $minFontSize) / ($maxWidth - $minWidth));
+	$yAxis: -$minWidth * $slope + $minFontSize;
+
+	@return unquote(
+		'clamp(' + $minFontSize + 'rem, (' + $yAxis + 'rem + ' + ($slope * 1000) + 'vw), ' +
+			$maxFontSize + 'rem)'
+	);
+}
+
+h1 {
+	line-height: 1;
+	font-weight: 700;
+
+	font-size: fluid(4, 6.5, 460, 1024);
+}
