@@ -1,28 +1,23 @@
-# create-svelte
+## Prerequisites
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+- Make sure you have npm installed (pnpm recommended)
+- Clone the GitHub repository locally
+- Navigate to your local repo `cd ecv-monsite`
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+`Preparing doc for pnpm installation on Windows and GitHub Usage...`
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Once you've created a project and installed dependencies with `npm install` (or `pnpm i` or `yarn`), start a development server:
 
 ```bash
 npm run dev
+```
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+or
+
+```bash
+pnpm dev
 ```
 
 ## Building
@@ -36,3 +31,7 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Deploying
+
+Using your GitHub account with Vercel's free hosting service allows for a quick staging and production deployement to live url.

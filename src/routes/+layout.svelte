@@ -7,7 +7,6 @@
 </script>
 
 <svelte:head>
-	<!-- <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" /> -->
 	<link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet" />
 </svelte:head>
 <Header />
