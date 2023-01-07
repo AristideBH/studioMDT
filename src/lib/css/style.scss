@@ -1,0 +1,40 @@
+@use 'colors';
+
+:root {
+	scroll-behavior: smooth;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+section {
+	min-height: 65vh;
+}
+
+h2 {
+	--typography-spacing-vertical: 1.125rem;
+}
+
+ul {
+	padding-inline-start: 0;
+	margin-bottom: 0;
+	li {
+		list-style-type: none;
+	}
+}
+
+.flex {
+	display: flex;
+}
+
+.flex\:col {
+	display: flex;
+	flex-flow: column;
+}
+
+.mx\:auto {
+	margin-inline: auto;
+}
