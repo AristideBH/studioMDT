@@ -72,11 +72,11 @@ Once the project is fetched, click <kbd>Open in Visual Studio Code</kbd> to laun
 
 ### Installing dependencies
 
-- In Visual Studio Code, open the integrated terminal. It should be inside the main directory of the project.
+- In Visual Studio Code, open the integrated terminal <kbd>Ctrl</kbd>+<kbd>ù</kbd>. (It should be inside the main directory of this project.)
 - Run `pnpm install` (or `pnpm i`) to install project dependencies. 
 - This will create a `node-modules` folder inside your main directory.
 
-Depending on your internet connection and number of required packages, it may takes a minute.
+Depending on your internet connection and number of required packages, it may takes a minute or two.
 
 
 ### Live server
@@ -108,4 +108,4 @@ You can preview the production build with `npm run preview`.
 
 Using your GitHub account with [Vercel](https://vercel.com/) free hosting service allows for a quick staging and production deployement to live url.
 
-> Preparing docs for Github commits & Vercel usage...
+> Preparing docs for GitHub commits & Vercel usage...
