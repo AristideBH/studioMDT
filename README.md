@@ -5,17 +5,17 @@
 
 ### nodeJS
 
-Using nodeJS provider ay of install works, but a time eventually come where you'll have to manage mulitple projects, with multiple nodeJS versions.
-To ease the use of update and switching, we will use Node Version Manager.
+Using nodeJS provided method of install works, but a time will eventually come where you'll have to manage mulitple projects, with multiple nodeJS versions.
+To ease the use of update and switching versions, we will use Node Version Manager.
 
 **Download and install [nvm for Windows](https://github.com/coreybutler/nvm-windows/releases).**
 
 Use the latest `nvm-setup.exe` file and complete install.
 
 - Open your prefered terminal with administrative rights.
-- Run `nvm install latest`, and wait for download
+- Run `nvm install latest`, and wait for download.
 - Run `nvm use latest`.
-- You can check what version of Node JS is installed with `node -v`
+- You can check what version of Node JS is installed with `node -v`.
 
 > For more informations, consult nodeJS [documentation](https://nodejs.org/en/docs/).
 
@@ -27,7 +27,7 @@ In a terminal window with administrative rights:
 ```
 npm install -g pnpm
 ```
-To use it, replace your `npm ...` commands with `pnpm ...`
+To use it, replace your `npm ...` commands with `pnpm ...`.
 
 > For more informations, consult pnpm [documentation](https://pnpm.io/pnpm-cli).
 
@@ -53,8 +53,8 @@ Once logged in with your GitHub account, use the <kbd>Add</kbd> button to:
 || Actions | Description |
 |---|---|---|
 |✅| Clone repository... | Get a list from your current cloud repositories, or clone one from an URL |
-|❌| Create new repository... | Insantiate a new repository directly from the app. |
-|❌| Add existing repository... | Sync a local repository to our GitHub account. |
+| | Create new repository... | Insantiate a new repository directly from the app. |
+| | Add existing repository... | Sync a local repository to our GitHub account. |
 
 For this project : 
 - Use the first option `Clone repository...`, then, in the URL tab:
@@ -70,11 +70,24 @@ Once the project is fetched, click <kbd>Open in Visual Studio Code</kbd> to laun
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm i` or `yarn`), start a development server:
+### Installing dependencies
+
+- In Visual Studio Code, open the integrated terminal. It should be inside the main directory of the project.
+- Run `pnpm install` (or `pnpm i`) to install project dependencies. 
+- This will create a `node-modules` folder inside your main directory.
+
+Depending on your internet connection and number of required packages, it may takes a minute.
+
+
+### Live server
+
+Once you've created a project and installed dependencies, start a development server:
 
 ```
 pnpm dev
 ```
+
+Follow the terminal prompts to open the server and start developing !
 
 
 ## Buildind and deploying
