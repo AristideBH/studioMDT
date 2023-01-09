@@ -65,7 +65,7 @@ Once the project is fetched, click <kbd>Open in Visual Studio Code</kbd> to laun
 
 #### 3. Visual Studio Code
 
-> For a better workflow with Svelte and Sveltekit in Visual Studio Code, we recommend the use of 
+> For a better workflow (auto-import, auto-completion, quick actions ...) with Svelte and Sveltekit in Visual Studio Code, we recommend the use of 
 [this packaged plugin](https://marketplace.visualstudio.com/items?itemName=1YiB.svelte-bundle).
 
 ## Developing
