@@ -16,7 +16,7 @@ Use the latest `nvm-setup.exe` file. Complete install.
 - Run `nvm use latest`.
 - You can check what version of Node JS is installed with `node -v`
 
->For more informations, consult nodeJS [documentation](https://nodejs.org/en/docs/).
+> For more informations, consult nodeJS [documentation](https://nodejs.org/en/docs/).
 
 ### pnpm
 
@@ -103,4 +103,4 @@ You can preview the production build with `npm run preview`.
 
 Using your GitHub account with Vercel's free hosting service allows for a quick staging and production deployement to live url.
 
-> Preparing docs for Vercel usage...
+> Preparing docs for Github commits & Vercel usage...
