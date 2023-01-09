@@ -82,7 +82,7 @@ pnpm dev
 ```
 
 
-##
+## Buildind and deploying
 
 ### Building
 
