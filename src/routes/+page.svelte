@@ -5,8 +5,7 @@
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
 	import ObjectiveCard from '$lib/components/items/ObjectiveCard.svelte';
 
-	import { t, locale, locales } from '$lib/i18n';
-
+	import { t } from '$lib/i18n';
 	import { news } from '$lib/news';
 	import { objectives } from '$lib/objectives';
 </script>
@@ -15,7 +14,7 @@
 	<title>Titre de la page</title>
 </svelte:head>
 
-<!-- ! HERO -->
+<!-- # HERO -->
 <section id="hero">
 	<video autoplay loop muted>
 		<source src="/hero.mp4" type="video/mp4" />
@@ -32,7 +31,7 @@
 	<ViewMore />
 </section>
 
-<!-- ! PRODUCTS -->
+<!-- # PRODUCTS -->
 <section id="products" class="container">
 	<span class="grid">
 		<code class="3D--wrapper">3D Object</code>
@@ -48,7 +47,7 @@
 	</span>
 </section>
 
-<!-- ! RSE -->
+<!-- # RSE -->
 <section id="rse" class="container">
 	<h2>M2i Group annonce ses objectifs</h2>
 	<p>
@@ -64,7 +63,7 @@
 	</div>
 </section>
 
-<!-- ! DATA -->
+<!-- # DATA -->
 <section id="data">
 	<div class="container flex:col">
 		<div class="title flex:col">
@@ -84,7 +83,7 @@
 	</div>
 </section>
 
-<!-- ! NEWS -->
+<!-- # NEWS -->
 <section id="news" class="container">
 	<span class="flex:col">
 		<h2>Actualités</h2>
@@ -118,6 +117,7 @@
 			}
 		}
 	}
+
 	#products .grid {
 		--grid-spacing-horizontal: 3rem;
 		--grid-spacing-vertical: 1.5rem;

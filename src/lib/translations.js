@@ -1,10 +1,10 @@
 export default {
 	fr: {
-		'homepage.title': 'Bonjour monde!',
-		'homepage.welcome': 'Salut <strong>{{name}}</strong>, comment ça va ?'
+		'homepage.title': 'Menez le changement !',
+		'homepage.welcome': 'Salut <b>{{name}}</b>, comment ça va ?'
 	},
 	en: {
-		'homepage.title': 'Hello, World!',
-		'homepage.welcome': 'Hi <strong>{{name}}</strong>, how are you?'
+		'homepage.title': 'Lead the change!',
+		'homepage.welcome': 'Hi <b>{{name}}</b>, how are you?'
 	}
 };

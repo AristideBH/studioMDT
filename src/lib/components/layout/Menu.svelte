@@ -1,11 +1,15 @@
 <script>
-	import { menu } from '$lib/menu.js';
+	import { menu, menuItems } from '$lib/menu.js';
+
+	function handleClick() {
+		$menu.close;
+	}
 </script>
 
 <ul class={$$props.class ?? 'desktop'}>
-	{#each menu as item}
+	{#each menuItems as item}
 		<li>
-			<a href={item.url}>
+			<a href={item.url} on:click={handleClick}>
 				{item.text}
 			</a>
 		</li>

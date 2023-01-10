@@ -4,10 +4,10 @@
 	import { scroll } from '$lib/utils';
 	import { fade } from 'svelte/transition';
 	import { locale, locales } from '$lib/i18n';
-	let menuOpen;
-	let bodyScroll = new scroll();
+	import { menu } from '$lib/menu';
 
-	$: menuOpen == true ? bodyScroll.disable() : bodyScroll.enable();
+	let bodyScroll = new scroll();
+	$: $menu === true ? bodyScroll.disable() : bodyScroll.enable();
 </script>
 
 <header class="container-fluid">
@@ -30,17 +30,11 @@
 	<ContactBtn class="contrast" />
 
 	<label for="menuMobile" class="flex:col">
-		<input
-			type="checkbox"
-			name="menuMobile"
-			id="menuMobile"
-			role="switch"
-			bind:checked={menuOpen}
-		/>
+		<input type="checkbox" name="menuMobile" id="menuMobile" role="switch" bind:checked={$menu} />
 	</label>
 </header>
 
-{#if menuOpen}
+{#if $menu}
 	<section id="mobileMenu" class="container-fluid" transition:fade={{ duration: 150 }}>
 		<nav class="container">
 			<Menu class="mobile" />
