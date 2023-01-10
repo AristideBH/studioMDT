@@ -11,7 +11,6 @@
 
 <svelte:head>
 	<title>Titre de la page</title>
-	<description>Description de la page</description>
 </svelte:head>
 
 <!-- ! HERO -->
