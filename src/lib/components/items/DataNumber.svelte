@@ -1,14 +1,34 @@
 <script>
+
 	export let options = {
-		data: 9_000,
+		data: 9000,
 		ico: '/favicon.png',
 		subtitle: 'un peu de texte'
 	};
+
+	let current = 0;
+	let duration = 1000;
+	const increment = 
+		options.data > 101 
+		? options.data / (duration / 10) 
+		: 1 ;
+
+	const counter = () => {
+		current += increment;
+		if (current >= options.data) {
+			current = options.data;
+		}
+	}
+
+	const formatNumber = (num, decimalPlaces = 2, thousandsSeparator = ' ') => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: decimalPlaces, useGrouping: true,  groupSeparator: thousandsSeparator }).format(num);
+	setInterval(counter, 10);
+// $: console.log(`💬 ~ nb`, nb);
+	
 </script>
 
 <li>
 	<img src={options?.ico} alt="{options.data} {options.subtitle}" />
-	<span>{options.data}</span>
+	<span >{formatNumber(current)}</span>
 	<p>
 		{options.subtitle}
 	</p>
