@@ -23,8 +23,8 @@
 
 	<div class="container">
 		<hgroup>
-			<h1>{$t('homepage.title')}</h1>
-			<h2>{@html $t('homepage.welcome', { name: 'Guillaume' })}</h2>
+			<!-- <h1>{$t('homepage.title')}</h1> -->
+			<!-- <h2>{@html $t('homepage.welcome', { name: 'Guillaume' })}</h2> -->
 		</hgroup>
 		<ContactBtn />
 	</div>

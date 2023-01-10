@@ -2,8 +2,6 @@ $primary-500: #009688;
 $primary-600: #00897b;
 $primary-700: #00796b;
 
-/* Teal Light scheme (Default) */
-/* Can be forced with data-theme="light" */
 [data-theme='light'],
 :root:not([data-theme='dark']) {
 	--primary: #{$primary-500};
@@ -12,8 +10,6 @@ $primary-700: #00796b;
 	--primary-inverse: #fff;
 }
 
-/* Teal Dark scheme (Auto) */
-/* Automatically enabled if user has Dark mode enabled */
 @media only screen and (prefers-color-scheme: dark) {
 	:root:not([data-theme='light']) {
 		--primary: #{$primary-500};
@@ -23,8 +19,6 @@ $primary-700: #00796b;
 	}
 }
 
-/* Teal Dark scheme (Forced) */
-/* Enabled if forced with data-theme="dark" */
 [data-theme='dark'] {
 	--primary: #{$primary-500};
 	--primary-hover: #{$primary-700};
@@ -32,7 +26,6 @@ $primary-700: #00796b;
 	--primary-inverse: #fff;
 }
 
-/* Teal (Common styles) */
 :root {
 	--form-element-active-border-color: var(--primary);
 	--form-element-focus-color: var(--primary-focus);

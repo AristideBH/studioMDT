@@ -7,7 +7,6 @@
 
 	const selected = (l) => {
 		if (l === 'fr') {
-			console.log('💬fr');
 			return true;
 		} else {
 			return false;
@@ -26,7 +25,7 @@
 
 	<select bind:value={$locale}>
 		{#each locales as l}
-			<option value={l} selected={selected(l)}>
+			<option value={l}>
 				{l}
 			</option>
 		{/each}
@@ -53,7 +52,7 @@
 	</section>
 {/if}
 
-<style lang="scss" global>
+<style lang="scss">
 	header {
 		backdrop-filter: blur(15px);
 		position: sticky;
