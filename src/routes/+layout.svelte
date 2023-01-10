@@ -4,11 +4,13 @@
 
 	import Header from '$lib/components/layout/Header.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
+	import { Svrollbar } from 'svrollbar';
 </script>
 
 <svelte:head>
 	<link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet" />
 </svelte:head>
+
 <Header />
 
 <main>
@@ -16,3 +18,5 @@
 </main>
 
 <Footer />
+
+<Svrollbar initiallyVisible />
