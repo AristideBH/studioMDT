@@ -2,7 +2,7 @@ export const menu =
 [
   { 
     text: 'Qui sommes-nous ?',
-    url: '/'
+    url: '/qui-sommes-nous'
   },
   { 
     text: 'Mi2 Biocontrol',
