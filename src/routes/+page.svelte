@@ -51,7 +51,7 @@
 		neque similique magnam quam veritatis?
 	</p>
 
-	<div class="grid3Col">
+	<div class="autoGrid">
 		{#each objectives as objective}
 			<ObjectiveCard {...objective}/>
 		{/each}
@@ -70,10 +70,10 @@
 				recusandae laborum! Minima officia voluptatibus amet corporis?
 			</p>
 		</div>
-		<ul class="grid">
-			<DataNumber options={{ data: 9000, ico: '/favicon.png', subtitle: 'text 1' }} />
-			<DataNumber options={{ data: 30, ico: '/favicon.png', subtitle: 'text 2' }} />
-			<DataNumber options={{ data: 600, ico: '/favicon.png', subtitle: 'text 3' }} />
+		<ul class="autoGrid">
+			<DataNumber options={{ data: 9000, ico: '/picto/1.png', subtitle: 'text 1' }} />
+			<DataNumber options={{ data: 30, ico: '/picto/2.png', subtitle: 'text 2' }} />
+			<DataNumber options={{ data: 600, ico: '/picto/2.png', subtitle: 'text 3' }} />
 		</ul>
 		<a href="/" class="mx:auto" role="button"> découvrir le reste</a>
 	</div>
@@ -119,8 +119,8 @@
 	}
 
 	#data {
-		background-color: var(--code-background-color);
 		padding-block: 4rem;
+		background-color: var(--code-background-color);
 
 		.title {
 			align-items: center;
@@ -134,11 +134,4 @@
 	}
 
 
-
-	.grid3Col {
-		width:100%;
-		display: grid; 
-		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-		gap: 1.5rem; 
-	}
 </style>

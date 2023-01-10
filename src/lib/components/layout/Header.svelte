@@ -1,5 +1,8 @@
 <script>
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
+	import Menu from '$lib/components/layout/Menu.svelte';
+	import { fly } from 'svelte/transition';
+	let menuCheck;
 </script>
 
 <header class="container-fluid">
@@ -8,31 +11,32 @@
 	</a>
 
 	<nav>
-		<ul>
-			<li><a href="/qui-sommes-nous">Qui sommes-nous ?</a></li>
-			<li><a href="/">M2i Biocontrol</a></li>
-			<li><a href="/">M2i CDMO</a></li>
-			<li><a href="/">Commander</a></li>
-		</ul>
+		<Menu/>
 	</nav>
 
-	<ContactBtn class="contrast outline " />
+	<ContactBtn class="contrast " />
 
-	<label for="langSwitch" class="flex:col">
-		<!-- <span>FR / EN</span> -->
-		<input type="checkbox" name="langSwitch" id="langSwitch" role="switch" />
+	<label for="menuMobile" class="flex:col">
+		<input type="checkbox" name="menuMobile" id="menuMobile" role="switch" bind:checked={menuCheck} />
 	</label>
+
 </header>
 
-<style lang="scss">
+{#if menuCheck}
+	<section id="mobileMenu" class="container-fluid" transition:fly={{x:20}}>
+		<nav class="container">
+			<Menu class="mobile"/>
+		</nav>
+	</section>
+{/if}
+
+<style lang="scss" global>
 	header {
 		backdrop-filter: blur(15px);
 		position: sticky;
 		top: 0;
 		background-color: var(--modal-overlay-background-color);
-		// margin-bottom: 2rem;
 		z-index: 5;
-
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -42,20 +46,17 @@
 
 	img {
 		height: var(--logo-height);
+		min-width: 163px;
+		object-fit: contain;
+		aspect-ratio: 163 / 71;
+
 	}
 
 	nav {
 		margin-right: auto;
 		margin-left: auto;
-
-		ul {
-			display: flex;
-			gap: 1rem;
-			margin-bottom: 0;
-		}
-		a {
-			font-size: 0.9rem;
-			--color: var(--primary-inverse);
+		&:empty{
+			display:none;
 		}
 	}
 
@@ -63,9 +64,25 @@
 		align-items: start;
 		justify-content: center;
 		gap: 0.25em;
+		@media only screen and (min-width:70em) { 
+        display: none;
+      }
+	}
+	
+	#mobileMenu{
+		position: fixed;
+		top: var(--header-height);
+		height: calc(100vh - var(--header-height));
+		background-color: var(--modal-overlay-background-color);
+		backdrop-filter: blur(15px);
+		z-index: 10;
+		padding-block: 1.5em 2.5em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-		span {
-			font-size: 10px;
-		}
+		@media only screen and (min-width:70em) { 
+        display: none;
+      }
 	}
 </style>

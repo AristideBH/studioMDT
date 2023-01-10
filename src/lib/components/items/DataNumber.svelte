@@ -22,7 +22,6 @@
 
 	const formatNumber = (num, decimalPlaces = 2, thousandsSeparator = ' ') => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: decimalPlaces, useGrouping: true,  groupSeparator: thousandsSeparator }).format(num);
 	setInterval(counter, 10);
-// $: console.log(`💬 ~ nb`, nb);
 	
 </script>
 
@@ -45,5 +44,11 @@
 	span {
 		font-size: 2.5rem;
 		font-weight: bolder;
+	}
+
+	img{
+		height: 135px;
+		width: 135px;
+		object-fit: contain;
 	}
 </style>

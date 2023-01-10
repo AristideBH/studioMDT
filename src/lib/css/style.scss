@@ -29,18 +29,17 @@ section {
 	// min-height: 65vh;
 }
 
-h2 {
-	--typography-spacing-vertical: 1.125rem;
-}
-
 ul {
 	padding-inline-start: 0;
 	margin-bottom: 0;
+	
 	li {
 		list-style-type: none;
 	}
 }
 
+
+// ! UTILITY CLASSES
 .flex {
 	display: flex;
 }
@@ -52,4 +51,12 @@ ul {
 
 .mx\:auto {
 	margin-inline: auto;
+}
+
+
+.autoGrid {
+	width:100%;
+	display: grid; 
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	gap: 1.5rem; 
 }
