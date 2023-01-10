@@ -1,5 +1,4 @@
-# Sveltekit template - site Mi2
-
+# Site Mi2
 
 ## Prerequisites
 
@@ -24,15 +23,16 @@ Use the latest `nvm-setup.exe` file and complete install.
 Using pnpm is the recommended way to manage your node packages, creating aliases folders for reused packages, improved speed and better storage management.
 
 In a terminal window with administrative rights:
+
 ```
 npm install -g pnpm
 ```
+
 To use it, replace your `npm ...` commands with `pnpm ...`.
 
 > For more informations, consult pnpm [documentation](https://pnpm.io/pnpm-cli).
 
-
-### Git and GitHub 
+### Git and GitHub
 
 #### 1. Git
 
@@ -56,7 +56,8 @@ Once logged in with your GitHub account, use the <kbd>Add</kbd> button to:
 | | Create new repository... | Insantiate a new repository directly from the app. |
 | | Add existing repository... | Sync a local repository to our GitHub account. |
 
-For this project : 
+For this project :
+
 - Use the first option `Clone repository...`, then, in the URL tab:
 - Paste the GitHub url : `https://github.com/AristideBH/ecv-monsite`
 - Choose a local folder where to clone the repository on your computer.
@@ -65,19 +66,18 @@ Once the project is fetched, click <kbd>Open in Visual Studio Code</kbd> to laun
 
 #### 3. Visual Studio Code
 
-> For a better workflow (auto-import, auto-completion, quick actions ...) with Svelte and Sveltekit in Visual Studio Code, we recommend the use of 
-[this packaged plugin](https://marketplace.visualstudio.com/items?itemName=1YiB.svelte-bundle).
+> For a better workflow (auto-import, auto-completion, quick actions ...) with Svelte and Sveltekit in Visual Studio Code, we recommend the use of
+> [this packaged plugin](https://marketplace.visualstudio.com/items?itemName=1YiB.svelte-bundle).
 
 ## Developing
 
 ### Installing dependencies
 
 - In Visual Studio Code, open the integrated terminal <kbd>Ctrl</kbd>+<kbd>ù</kbd>. (It should be inside the main directory of this project.)
-- Run `pnpm install` (or `pnpm i`) to install project dependencies. 
+- Run `pnpm install` (or `pnpm i`) to install project dependencies.
 - This will create a `node-modules` folder inside your main directory.
 
 Depending on your internet connection and number of required packages, it may takes a minute or two.
-
 
 ### Live server
 
@@ -88,7 +88,6 @@ pnpm dev
 ```
 
 Follow the terminal prompts to open the server and start developing !
-
 
 ## Buildind and deploying
 

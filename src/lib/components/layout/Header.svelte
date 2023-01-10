@@ -1,9 +1,13 @@
 <script>
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 	import Menu from '$lib/components/layout/Menu.svelte';
-	import { fly } from 'svelte/transition';
-	import { t, locale, locales } from '$lib/i18n';
-	let menuCheck;
+	import { scroll } from '$lib/utils';
+	import { fade } from 'svelte/transition';
+	import { locale, locales } from '$lib/i18n';
+	let menuOpen;
+	let bodyScroll = new scroll();
+
+	$: menuOpen == true ? bodyScroll.disable() : bodyScroll.enable();
 </script>
 
 <header class="container-fluid">
@@ -23,7 +27,7 @@
 		{/each}
 	</select>
 
-	<ContactBtn class="contrast " />
+	<ContactBtn class="contrast" />
 
 	<label for="menuMobile" class="flex:col">
 		<input
@@ -31,13 +35,13 @@
 			name="menuMobile"
 			id="menuMobile"
 			role="switch"
-			bind:checked={menuCheck}
+			bind:checked={menuOpen}
 		/>
 	</label>
 </header>
 
-{#if menuCheck}
-	<section id="mobileMenu" class="container-fluid" transition:fly={{ x: 20 }}>
+{#if menuOpen}
+	<section id="mobileMenu" class="container-fluid" transition:fade={{ duration: 150 }}>
 		<nav class="container">
 			<Menu class="mobile" />
 		</nav>

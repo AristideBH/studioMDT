@@ -32,12 +32,11 @@ section {
 ul {
 	padding-inline-start: 0;
 	margin-bottom: 0;
-	
+
 	li {
 		list-style-type: none;
 	}
 }
-
 
 // ! UTILITY CLASSES
 .flex {
@@ -53,10 +52,13 @@ ul {
 	margin-inline: auto;
 }
 
+.overflow\:hidden {
+	overflow: hidden;
+}
 
 .autoGrid {
-	width:100%;
-	display: grid; 
+	width: 100%;
+	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-	gap: 1.5rem; 
+	gap: 1.5rem;
 }
