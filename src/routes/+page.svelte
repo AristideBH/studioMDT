@@ -1,11 +1,12 @@
 <script>
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 	import DataNumber from '$lib/components/items/DataNumber.svelte';
-	import PanelItem from '$lib/components/items/PanelItem.svelte';
 	import PanelWrapper from '$lib/components/items/PanelWrapper.svelte';
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
+	import ObjectiveCard from '$lib/components/items/ObjectiveCard.svelte';
 
 	import { news } from '$lib/news';
+	import { objectives } from '$lib/objectives';
 </script>
 
 <!-- ! HERO -->
@@ -50,7 +51,12 @@
 		neque similique magnam quam veritatis?
 	</p>
 
-	<img src="/rse.png" alt="" />
+	<div class="grid3Col">
+		{#each objectives as objective}
+			<ObjectiveCard {...objective}/>
+		{/each}
+	</div>
+
 </section>
 
 <!-- ! DATA -->
@@ -67,7 +73,7 @@
 		<ul class="grid">
 			<DataNumber options={{ data: 9000, ico: '/favicon.png', subtitle: 'text 1' }} />
 			<DataNumber options={{ data: 30, ico: '/favicon.png', subtitle: 'text 2' }} />
-			<DataNumber options={{ data: 60, ico: '/favicon.png', subtitle: 'text 3' }} />
+			<DataNumber options={{ data: 600, ico: '/favicon.png', subtitle: 'text 3' }} />
 		</ul>
 		<a href="/" class="mx:auto" role="button"> découvrir le reste</a>
 	</div>
@@ -125,5 +131,14 @@
 				max-width: max(640px, 65vh);
 			}
 		}
+	}
+
+
+
+	.grid3Col {
+		width:100%;
+		display: grid; 
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 1.5rem; 
 	}
 </style>

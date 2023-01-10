@@ -32,7 +32,7 @@
 	}
 
 	img {
-		height: 50px;
-		width: 50px;
+		height: 36px;
+		width: 36px;
 	}
 </style>

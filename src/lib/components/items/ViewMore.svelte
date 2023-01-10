@@ -24,6 +24,7 @@
 		width: 30px;
 		border: 2px white solid;
 		border-radius: 50px;
+		&:hover, &:focus{text-decoration: none;}
 
 		&::before {
 			content: '';
