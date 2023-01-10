@@ -4,14 +4,6 @@
 	import { fly } from 'svelte/transition';
 	import { t, locale, locales } from '$lib/i18n';
 	let menuCheck;
-
-	const selected = (l) => {
-		if (l === 'fr') {
-			return true;
-		} else {
-			return false;
-		}
-	};
 </script>
 
 <header class="container-fluid">
