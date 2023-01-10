@@ -78,7 +78,7 @@
 			<DataNumber options={{ data: 30, ico: '/picto/2.png', subtitle: 'text 2' }} />
 			<DataNumber options={{ data: 600, ico: '/picto/2.png', subtitle: 'text 3' }} />
 		</ul>
-		<a href="/" class="mx:auto" role="button"> découvrir le reste</a>
+		<a href="/" class="mx:auto" role="button"> Voir tout</a>
 	</div>
 </section>
 
