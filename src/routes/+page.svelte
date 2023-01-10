@@ -9,6 +9,11 @@
 	import { objectives } from '$lib/objectives';
 </script>
 
+<svelte:head>
+	<title>Titre de la page</title>
+	<description>Description de la page</description>
+</svelte:head>
+
 <!-- ! HERO -->
 <section id="hero">
 	<video autoplay loop muted>
@@ -53,10 +58,9 @@
 
 	<div class="autoGrid">
 		{#each objectives as objective}
-			<ObjectiveCard {...objective}/>
+			<ObjectiveCard {...objective} />
 		{/each}
 	</div>
-
 </section>
 
 <!-- ! DATA -->
@@ -132,6 +136,4 @@
 			}
 		}
 	}
-
-
 </style>

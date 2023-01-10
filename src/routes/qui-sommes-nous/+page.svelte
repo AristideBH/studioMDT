@@ -1,3 +1,8 @@
+<svelte:head>
+	<title>Titre de la page</title>
+	<description>Description de la page</description>
+</svelte:head>
+
 <section class="container ">
 	<h2>About</h2>
 
