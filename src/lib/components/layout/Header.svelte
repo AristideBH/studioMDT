@@ -2,7 +2,17 @@
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 	import Menu from '$lib/components/layout/Menu.svelte';
 	import { fly } from 'svelte/transition';
+	import { t, locale, locales } from '$lib/i18n';
 	let menuCheck;
+
+	const selected = (l) => {
+		if (l === 'fr') {
+			console.log('💬fr');
+			return true;
+		} else {
+			return false;
+		}
+	};
 </script>
 
 <header class="container-fluid">
@@ -11,21 +21,34 @@
 	</a>
 
 	<nav>
-		<Menu/>
+		<Menu />
 	</nav>
+
+	<select bind:value={$locale}>
+		{#each locales as l}
+			<option value={l} selected={selected(l)}>
+				{l}
+			</option>
+		{/each}
+	</select>
 
 	<ContactBtn class="contrast " />
 
 	<label for="menuMobile" class="flex:col">
-		<input type="checkbox" name="menuMobile" id="menuMobile" role="switch" bind:checked={menuCheck} />
+		<input
+			type="checkbox"
+			name="menuMobile"
+			id="menuMobile"
+			role="switch"
+			bind:checked={menuCheck}
+		/>
 	</label>
-
 </header>
 
 {#if menuCheck}
-	<section id="mobileMenu" class="container-fluid" transition:fly={{x:20}}>
+	<section id="mobileMenu" class="container-fluid" transition:fly={{ x: 20 }}>
 		<nav class="container">
-			<Menu class="mobile"/>
+			<Menu class="mobile" />
 		</nav>
 	</section>
 {/if}
@@ -49,14 +72,13 @@
 		min-width: 163px;
 		object-fit: contain;
 		aspect-ratio: 163 / 71;
-
 	}
 
 	nav {
 		margin-right: auto;
 		margin-left: auto;
-		&:empty{
-			display:none;
+		&:empty {
+			display: none;
 		}
 	}
 
@@ -64,12 +86,17 @@
 		align-items: start;
 		justify-content: center;
 		gap: 0.25em;
-		@media only screen and (min-width:70em) { 
-        display: none;
-      }
+		@media only screen and (min-width: 70em) {
+			display: none;
+		}
 	}
-	
-	#mobileMenu{
+
+	select {
+		width: fit-content;
+		margin-bottom: 0;
+	}
+
+	#mobileMenu {
 		position: fixed;
 		top: var(--header-height);
 		height: calc(100vh - var(--header-height));
@@ -81,8 +108,8 @@
 		align-items: center;
 		justify-content: center;
 
-		@media only screen and (min-width:70em) { 
-        display: none;
-      }
+		@media only screen and (min-width: 70em) {
+			display: none;
+		}
 	}
 </style>

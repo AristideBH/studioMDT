@@ -5,6 +5,8 @@
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
 	import ObjectiveCard from '$lib/components/items/ObjectiveCard.svelte';
 
+	import { t, locale, locales } from '$lib/i18n';
+
 	import { news } from '$lib/news';
 	import { objectives } from '$lib/objectives';
 </script>
@@ -21,8 +23,8 @@
 
 	<div class="container">
 		<hgroup>
-			<h1>Lead the change</h1>
-			<h2>leader mondial bla bla</h2>
+			<h1>{$t('homepage.title')}</h1>
+			<h2>{@html $t('homepage.welcome', { name: 'Guillaume' })}</h2>
 		</hgroup>
 		<ContactBtn />
 	</div>
