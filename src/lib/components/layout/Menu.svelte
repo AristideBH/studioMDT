@@ -33,6 +33,9 @@
 		}
 
 		&.desktop {
+			li{
+				margin-bottom: 0;
+			}
 			a {
 				font-size: 0.9rem;
 				font-weight: 500;
