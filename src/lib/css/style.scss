@@ -1,6 +1,7 @@
 @use 'colors';
 @use 'typography';
 
+// # DOCUMENT
 :root {
 	scroll-behavior: smooth;
 	--logo-height: 3.75rem;
@@ -25,8 +26,6 @@ section {
 	&:last-of-type {
 		--spacing: 1rem;
 	}
-
-	// min-height: 65vh;
 }
 
 ul {
@@ -38,7 +37,7 @@ ul {
 	}
 }
 
-// ! UTILITY CLASSES
+// # UTILITY CLASSES
 .flex {
 	display: flex;
 }
@@ -52,28 +51,27 @@ ul {
 	margin-inline: auto;
 }
 
-.overflow\:hidden {
-	overflow: hidden;
-}
-
-body {
-	/* hide scrollbar */
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-body::-webkit-scrollbar {
-	/* hide scrollbar */
-	display: none;
-}
-
-.v-scrollbar {
-	z-index: 10;
-}
-
 .autoGrid {
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 	gap: 1.5rem;
+}
+
+// # SCROLL
+
+.overflow\:hidden {
+	overflow: hidden;
+}
+
+body {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.v-scrollbar {
+	z-index: 10;
 }

@@ -1,10 +1,11 @@
 <script>
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 	import Menu from '$lib/components/layout/Menu.svelte';
-	import { scroll } from '$lib/utils';
-	import { fade } from 'svelte/transition';
-	import { locale, locales } from '$lib/i18n';
+	import LangSelect from '$lib/components/items/LangSelect.svelte';
+	import MobileMenu from '$lib/components/layout/MobileMenu.svelte';
+	import MenuButton from '$lib/components/layout/MenuButton.svelte';
 	import { menu } from '$lib/menu';
+	import { scroll } from '$lib/utils';
 
 	let bodyScroll = new scroll();
 	$: $menu === true ? bodyScroll.disable() : bodyScroll.enable();
@@ -12,34 +13,23 @@
 
 <header class="container-fluid">
 	<a href="/">
-		<img src="/logo-white.png" alt="" />
+		<img src="/logo-white.png" alt="M2i, Lead the change" />
 	</a>
 
 	<nav>
 		<Menu />
 	</nav>
 
-	<select bind:value={$locale}>
-		{#each locales as l}
-			<option value={l}>
-				{l}
-			</option>
-		{/each}
-	</select>
+	<div class="actions">
+		<LangSelect/>
+		<ContactBtn class="contrast" />
+		<MenuButton/>
+	</div>
 
-	<ContactBtn class="contrast" />
-
-	<label for="menuMobile" class="flex:col">
-		<input type="checkbox" name="menuMobile" id="menuMobile" role="switch" bind:checked={$menu} />
-	</label>
 </header>
 
 {#if $menu}
-	<section id="mobileMenu" class="container-fluid" transition:fade={{ duration: 150 }}>
-		<nav class="container">
-			<Menu class="mobile" />
-		</nav>
-	</section>
+	<MobileMenu/>
 {/if}
 
 <style lang="scss">
@@ -54,6 +44,11 @@
 		align-items: center;
 		gap: 1.5rem;
 		padding-block: var(--padding-header);
+
+		.actions{
+			display: flex;
+			gap:0.75rem;
+		}
 	}
 
 	img {
@@ -71,34 +66,4 @@
 		}
 	}
 
-	label {
-		align-items: start;
-		justify-content: center;
-		gap: 0.25em;
-		@media only screen and (min-width: 70em) {
-			display: none;
-		}
-	}
-
-	select {
-		width: fit-content;
-		margin-bottom: 0;
-	}
-
-	#mobileMenu {
-		position: fixed;
-		top: var(--header-height);
-		height: calc(100vh - var(--header-height));
-		background-color: var(--modal-overlay-background-color);
-		backdrop-filter: blur(15px);
-		z-index: 10;
-		padding-block: 1.5em 2.5em;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-
-		@media only screen and (min-width: 70em) {
-			display: none;
-		}
-	}
 </style>

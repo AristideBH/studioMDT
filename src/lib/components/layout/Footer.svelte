@@ -1,10 +1,22 @@
+<script>
+	import 'iconify-icon';
+</script>
+
 <footer class="container">
 	<nav>
 		<ul>
-			<li><a href="/"><img src="/favicon.png" alt="" /></a></li>
-			<li><a href="/"><img src="/favicon.png" alt="" /></a></li>
-			<li><a href="/"><img src="/favicon.png" alt="" /></a></li>
-			<li><a href="/"><img src="/favicon.png" alt="" /></a></li>
+			<li><a href="/">
+				<iconify-icon icon="uil:facebook-f"></iconify-icon>
+			</a></li>
+			<li><a href="/">
+				<iconify-icon icon="uil:instagram"></iconify-icon>
+			</a></li>
+			<li><a href="/">
+				<iconify-icon icon="uil:twitter"></iconify-icon>
+			</a></li>
+			<li><a href="/">
+				<iconify-icon icon="uil:youtube"></iconify-icon>
+			</a></li>
 		</ul>
 
 		<ul>
@@ -31,8 +43,8 @@
 		gap: 10px;
 	}
 
-	img {
-		height: 36px;
-		width: 36px;
+	a	{
+		color: var(--primrary-inverse);
 	}
+
 </style>

@@ -1,19 +1,20 @@
 <script>
+	import  'iconify-icon';
   export let title, subtitle, link, ico, color;
 </script>
 
 <a href="{link}">
   <article style:--c={color}>
-      <h2>{title}</h2>
+    <h2>{title}</h2>
+
+    {#if subtitle}
+      <p>{subtitle}</p>
+    {/if}
+
+    <iconify-icon height="36" icon={ico}></iconify-icon>
   
-      {#if subtitle}
-        <p>{subtitle}</p>
-      {/if}
-  
-    <img src="{ico}" alt="">
   </article>
 </a>
-
 
 <style lang="scss">
   a, article{
@@ -45,10 +46,10 @@
     color:white;
   }
 
-  img{
-    height: 42px;
-    width: 42px;
-    margin-top: auto;
-    align-self: end;
+  iconify-icon{
+    color:var(--primary-inverse);
+    margin-left: auto;
   }
+
+
 </style>
