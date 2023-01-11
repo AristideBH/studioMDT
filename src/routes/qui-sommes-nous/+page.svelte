@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { t } from '$lib/i18n';
-	
 </script>
 
 <svelte:head>
@@ -9,9 +8,5 @@
 
 <section class="container ">
 	<h2>{$t('about.title')}</h2>
-
-	<p>
-		{$t('about.welcome')}
-	</p>
+	<p>{$t('about.welcome')}</p>
 </section>
-
