@@ -52,15 +52,15 @@ You will be able to create, clone, and update repositories, push and pull code, 
 Once logged in with your GitHub account, use the <kbd>Add</kbd> button to:
 || Actions | Description |
 |---|---|---|
-| | Clone repository... | Get a list from your current cloud repositories, or clone one from an URL |
+|✅| Clone repository... | Get a list from your current cloud repositories, or clone one from an URL |
 | | Create new repository... | Insantiate a new repository directly from the app. |
-|✅| Add existing repository... | Sync a local repository to our GitHub account. |
+| | Add existing repository... | Sync a local repository to our GitHub account. |
 
 For this project :
 - After joining the repo as collaborator from the received invite :
-- Use the first option `Add existing repository...`, then:
-- Select the existing `ecv-monsite`
-- Choose a local folder where to copy the repository on your computer.
+- Use the first option `Clone repository...`, then:
+- Select the existing `ecv-monsite` from your current repositories list.
+- Choose a local folder where to copy the repository on your computer, and clone it.
 
 Once the project is fetched, click <kbd>Open in Visual Studio Code</kbd> to launch the project.
 
