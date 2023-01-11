@@ -1,5 +1,7 @@
 <script>
 	import 'iconify-icon';
+	import LangSelect from '$lib/components/items/LangSelect.svelte';
+
 </script>
 
 <footer class="container">
@@ -22,11 +24,13 @@
 		<ul>
 			<li><a href="/">Cookies</a></li>
 			<li><a href="/">Work</a></li>
+			<LangSelect/>
+
 		</ul>
 	</nav>
 </footer>
 
-<style>
+<style lang="scss">
 	footer {
 		margin-top: auto;
 		padding-block: 1rem;
@@ -36,11 +40,14 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 1.5rem;
 	}
 
 	ul {
-		gap: 10px;
+		gap: 1em;
+
+		li{
+			margin-bottom: 0;
+		}
 	}
 
 	a	{

@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Titre de la page</title>
+	<title>Mi2 | {$t('homepage.title')}</title>
 </svelte:head>
 
 <!-- # HERO -->

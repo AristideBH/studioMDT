@@ -1,7 +1,6 @@
 <script>
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 	import Menu from '$lib/components/layout/Menu.svelte';
-	import LangSelect from '$lib/components/items/LangSelect.svelte';
 	import MobileMenu from '$lib/components/layout/MobileMenu.svelte';
 	import MenuButton from '$lib/components/layout/MenuButton.svelte';
 	import { menu } from '$lib/menu';
@@ -21,7 +20,6 @@
 	</nav>
 
 	<div class="actions">
-		<LangSelect/>
 		<ContactBtn class="contrast" />
 		<MenuButton/>
 	</div>

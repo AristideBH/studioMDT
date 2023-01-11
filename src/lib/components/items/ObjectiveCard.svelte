@@ -5,7 +5,7 @@
 
 <a href="{link}">
   <article style:--c={color}>
-    <h2>{title}</h2>
+    <h3>{title}</h3>
 
     {#if subtitle}
       <p>{subtitle}</p>
@@ -36,19 +36,20 @@
     }
   }
 
-  h2{
+  h3{
     line-height: 1.25;
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
 
-  h2, p{
+  h3, p{
     color:white;
   }
 
   iconify-icon{
     color:var(--primary-inverse);
     margin-left: auto;
+    margin-top: auto;
   }
 
 
