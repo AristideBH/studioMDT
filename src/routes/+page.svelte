@@ -6,7 +6,14 @@
 	import PocketBase from 'pocketbase';
 	const pb = new PocketBase('http://127.0.0.1:8090');
 	const allCategories = pb.collection('categories').getList(1, 20);
-	const pinnedProducts = pb.collection('pinnedProducts').getList(1, 20);
+	const pinnedProducts = pb.collection('pinnedProducts').getList(1, 20, {
+		expand: 'title'
+	});
+
+	const getPinnedProductByID = (id: number) => {
+		let product = pb.collection('pinnedProducts').getOne(id);
+		return product.data;
+	};
 
 	import { news } from '$lib/news';
 </script>
@@ -27,7 +34,9 @@
 				{:then value}
 					<ul class="flex gap">
 						{#each value.items as item}
-							<li><a href="/produits?tags={slugify(item.name)}">{item.name}</a></li>
+							<li>
+								<a href="/produits?tags={slugify(item.name)}">{item.name}</a>
+							</li>
 						{/each}
 					</ul>
 				{:catch error}
@@ -59,10 +68,11 @@
 			<ul class="flex gap">
 				{#each value.items as item}
 					<li>
-						<img
-							src="http://127.0.0.1:8090/api/files/pinnedProducts/{item.id}/{item.vignette}"
-							alt=""
-						/>
+						{console.log(item)}
+						<p>{item.id}</p>
+						<!-- {#await getPinnedProductByID(item.id) then value}
+							<img src="http://127.0.0.1:8090/api/files/pinnedProducts/{item.id}/{value}" alt="" />
+						{/await} -->
 					</li>
 				{/each}
 			</ul>
