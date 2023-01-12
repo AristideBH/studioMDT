@@ -10,6 +10,13 @@
 	);
 }
 
+body {
+	--font-family: 'Blinker', sans-serif;
+}
+.font {
+	font-family: var(--font-family);
+}
+
 h1 {
 	line-height: 1;
 	font-weight: 700;

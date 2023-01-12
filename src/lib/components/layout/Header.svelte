@@ -3,8 +3,9 @@
 	import Menu from '$lib/components/layout/Menu.svelte';
 	import MobileMenu from '$lib/components/layout/MobileMenu.svelte';
 	import MenuButton from '$lib/components/layout/MenuButton.svelte';
-	import { menu } from '$lib/menu';
-	import { scroll } from '$lib/utils';
+
+	import { menu } from '$lib/js/menu';
+	import { scroll } from '$lib/js/utils';
 
 	let bodyScroll = new scroll();
 	$: $menu === true ? bodyScroll.disable() : bodyScroll.enable();
@@ -12,7 +13,7 @@
 
 <header class="container-fluid">
 	<a href="/">
-		<img src="/logo-white.png" alt="M2i, Lead the change" />
+		<div class="logo font">Studio.<br />MDT</div>
 	</a>
 
 	<nav>
@@ -20,14 +21,13 @@
 	</nav>
 
 	<div class="actions">
-		<ContactBtn class="contrast" />
-		<MenuButton/>
+		<ContactBtn />
+		<MenuButton />
 	</div>
-
 </header>
 
 {#if $menu}
-	<MobileMenu/>
+	<MobileMenu />
 {/if}
 
 <style lang="scss">
@@ -43,10 +43,22 @@
 		gap: 1.5rem;
 		padding-block: var(--padding-header);
 
-		.actions{
+		.actions {
 			display: flex;
-			gap:0.75rem;
+			gap: 0.75rem;
 		}
+
+		nav {
+			display: flex;
+			gap: 1.5rem;
+		}
+	}
+
+	.logo {
+		font-weight: 900;
+		line-height: 0.86;
+		font-size: 2em;
+		color: var(--h1-color);
 	}
 
 	img {
@@ -63,5 +75,4 @@
 			display: none;
 		}
 	}
-
 </style>

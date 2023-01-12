@@ -1,5 +1,6 @@
 <script>
-	import { menu, menuItems } from '$lib/menu.js';
+	import { menu, menuItems } from '$lib/js/menu.js';
+	import Socials from '$lib/components/items/Socials.svelte';
 </script>
 
 <ul class={$$props.class ?? 'desktop'}>
@@ -10,6 +11,9 @@
 			</a>
 		</li>
 	{/each}
+	<li>
+		<Socials />
+	</li>
 </ul>
 
 <style lang="scss">
@@ -33,7 +37,7 @@
 		}
 
 		&.desktop {
-			li{
+			li {
 				margin-bottom: 0;
 			}
 			a {

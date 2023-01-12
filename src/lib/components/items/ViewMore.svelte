@@ -1,4 +1,4 @@
-<a class="viewMore" href="#products">&nbsp;</a>
+<a class="viewMore" href="#data">&nbsp;</a>
 
 <style lang="scss">
 	@keyframes scroll-down {
@@ -22,9 +22,12 @@
 		left: 50%;
 		height: 50px;
 		width: 30px;
-		border: 2px white solid;
+		// border: 2px white solid;
 		border-radius: 50px;
-		&:hover, &:focus{text-decoration: none;}
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
 
 		&::before {
 			content: '';

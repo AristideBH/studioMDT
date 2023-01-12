@@ -4,5 +4,6 @@
 	button {
 		width: fit-content;
 		margin-bottom: 0 !important;
+		border-radius: 100px;
 	}
 </style>

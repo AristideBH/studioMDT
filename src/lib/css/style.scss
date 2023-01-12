@@ -6,14 +6,13 @@
 	scroll-behavior: smooth;
 	--logo-height: 3.75rem;
 	--padding-header: 0.8rem;
-	--header-height: calc(2 * var(--padding-header) + var(--logo-height));
+	--header-height: 95px;
 }
 
 body {
 	min-height: 100vh;
 	display: flex;
 	flex-flow: column nowrap;
-	--font-family: 'Poppins', sans-serif;
 }
 
 section {
@@ -37,6 +36,10 @@ ul {
 	}
 }
 
+button,
+a[role='button'] {
+	border-radius: 100px !important;
+}
 // # UTILITY CLASSES
 .flex {
 	display: flex;
@@ -49,6 +52,10 @@ ul {
 
 .mx\:auto {
 	margin-inline: auto;
+}
+
+.gap {
+	gap: 1rem;
 }
 
 .autoGrid {

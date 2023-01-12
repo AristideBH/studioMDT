@@ -1,61 +1,44 @@
-<script>
-	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
-	import DataNumber from '$lib/components/items/DataNumber.svelte';
+<script lang="ts">
 	import PanelWrapper from '$lib/components/items/PanelWrapper.svelte';
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
-	import ObjectiveCard from '$lib/components/items/ObjectiveCard.svelte';
+	import { slugify } from '$lib/js/utils';
+
+	import PocketBase from 'pocketbase';
+	const pb = new PocketBase('http://127.0.0.1:8090');
+	const allCategories = pb.collection('categories').getList(1, 20);
+	const pinnedProducts = pb.collection('pinnedProducts').getList(1, 20);
 
 	import { news } from '$lib/news';
-	import { objectives } from '$lib/objectives';
 </script>
 
 <!-- # HERO -->
 <section id="hero">
-	<video autoplay loop muted>
-		<source src="/hero.mp4" type="video/mp4" />
-	</video>
+	<img src="hero.jpg" alt="" />
+	<div class="overlay" />
 
 	<div class="container">
 		<hgroup>
-			<h1>Titre</h1>
-			<h2>Lorem</h2>
+			<h1>Création & design</h1>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur autem esse</p>
+
+			<div class="container">
+				{#await allCategories}
+					<p>chargement des Catégories...</p>
+				{:then value}
+					<ul class="flex gap">
+						{#each value.items as item}
+							<li><a href="/produits?tags={slugify(item.name)}">{item.name}</a></li>
+						{/each}
+					</ul>
+				{:catch error}
+					<p>une erreur s'est produite dans le cgargment des filtres</p>
+					<code>{error}</code>
+				{/await}
+			</div>
 		</hgroup>
-		<ContactBtn />
 	</div>
 
 	<ViewMore />
-</section>
-
-<!-- # PRODUCTS -->
-<section id="products" class="container">
-	<span class="grid">
-		<code class="3D--wrapper">3D Object</code>
-
-		<div>
-			<h2>Des produits innovants, naturels, et non-nocifs</h2>
-			<p>
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat facilis sequi explicabo
-				magnam, sit qui nostrum adipisci alias excepturi suscipit similique cum ipsam dolor possimus
-				iste, fugit culpa ab nulla!
-			</p>
-		</div>
-	</span>
-</section>
-
-<!-- # RSE -->
-<section id="rse" class="container">
-	<h2>M2i Group annonce ses objectifs</h2>
-	<p>
-		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, fugit ab expedita accusamus
-		non voluptatum ea, ratione autem repudiandae cupiditate aliquam. Laboriosam, saepe ipsa qui
-		neque similique magnam quam veritatis?
-	</p>
-
-	<div class="autoGrid">
-		{#each objectives as objective}
-			<ObjectiveCard {...objective} />
-		{/each}
-	</div>
 </section>
 
 <!-- # DATA -->
@@ -69,21 +52,34 @@
 				recusandae laborum! Minima officia voluptatibus amet corporis?
 			</p>
 		</div>
-		<ul class="autoGrid">
-			<DataNumber options={{ data: 9000, ico: '/picto/1.png', subtitle: 'text 1' }} />
-			<DataNumber options={{ data: 30, ico: '/picto/2.png', subtitle: 'text 2' }} />
-			<DataNumber options={{ data: 600, ico: '/picto/2.png', subtitle: 'text 3' }} />
-		</ul>
-		<a href="/" class="mx:auto" role="button"> découvrir le reste</a>
+
+		{#await pinnedProducts}
+			<p>chargement des Catégories...</p>
+		{:then value}
+			<ul class="flex gap">
+				{#each value.items as item}
+					<li>
+						<img
+							src="http://127.0.0.1:8090/api/files/pinnedProducts/{item.id}/{item.vignette}"
+							alt=""
+						/>
+					</li>
+				{/each}
+			</ul>
+		{:catch error}
+			<p>une erreur s'est produite dans le cgargment des filtres</p>
+			<code>{error}</code>
+		{/await}
+		<a href="/" class="mx:auto outline" role="button"> découvrir le reste</a>
 	</div>
 </section>
 
-<!-- # NEWS -->
-<section id="news" class="container">
+<!-- # A PROPOS -->
+<section id="about" class="container">
 	<span class="flex:col">
-		<h2>Actualités</h2>
+		<h2>À propos</h2>
 		<PanelWrapper {news} />
-		<a class="mx:auto" role="button" href="/">Voir toutes les actus</a>
+		<a class="mx:auto outline" role="button" href="/">En savoir plus</a>
 	</span>
 </section>
 
@@ -95,8 +91,30 @@
 		display: flex;
 		align-items: center;
 		margin-top: calc(var(--header-height) * -1);
+		margin-bottom: 0;
 
-		video {
+		h1 {
+			mix-blend-mode: color;
+		}
+
+		&:hover {
+			.overlay {
+				opacity: 0.5;
+			}
+		}
+
+		.overlay {
+			background-color: var(--dropdown-hover-background-color);
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			opacity: 0;
+			transition: opacity 250ms ease-out;
+		}
+
+		img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;

@@ -1,17 +1,16 @@
 <script>
-  import { menu } from "$lib/menu";
+	import { menu } from '$lib/js/menu';
 </script>
 
-<div class="menu-icon" class:active={$menu}	on:click={menu.toggle}>
+<div class="menu-icon" class:active={$menu} on:click={menu.toggle}>
 	<div>
 		<span />
 		<span />
 	</div>
 </div>
 
-
 <style lang="scss">
-  .menu-icon {
+	.menu-icon {
 		--line-color: var(--h1-color);
 		--back-color: var(--primary);
 		position: relative;
@@ -33,7 +32,7 @@
 			justify-content: center;
 			pointer-events: none;
 		}
-    
+
 		span {
 			position: absolute;
 			display: block;
@@ -65,9 +64,9 @@
 					opacity: 1;
 				}
 			}
-      &:hover span {
-        width: 22px;
-      }
+			&:hover span {
+				width: 22px;
+			}
 		}
 
 		&:hover {
@@ -79,9 +78,8 @@
 			}
 		}
 
-    @media only screen and (min-width: 70em) {
+		@media only screen and (min-width: 70em) {
 			display: none;
-    }
+		}
 	}
-
 </style>

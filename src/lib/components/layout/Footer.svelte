@@ -1,35 +1,14 @@
-<script>
-	import 'iconify-icon';
+<script lang="ts">
+	import Socials from '$lib/components/items/Socials.svelte';
 </script>
 
 <footer class="container">
 	<nav>
 		<ul>
 			<li>
-				<a href="/">
-					<iconify-icon icon="uil:facebook-f" />
-				</a>
+				<Socials />
 			</li>
-			<li>
-				<a href="/">
-					<iconify-icon icon="uil:instagram" />
-				</a>
-			</li>
-			<li>
-				<a href="/">
-					<iconify-icon icon="uil:twitter" />
-				</a>
-			</li>
-			<li>
-				<a href="/">
-					<iconify-icon icon="uil:youtube" />
-				</a>
-			</li>
-		</ul>
-
-		<ul>
 			<li><a href="/">Cookies</a></li>
-			<li><a href="/">Work</a></li>
 		</ul>
 	</nav>
 </footer>
@@ -55,6 +34,6 @@
 	}
 
 	a {
-		color: var(--primrary-inverse);
+		color: var(--h1-color);
 	}
 </style>
