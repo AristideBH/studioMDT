@@ -5,14 +5,9 @@
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
 	import ObjectiveCard from '$lib/components/items/ObjectiveCard.svelte';
 
-	import { t } from '$lib/i18n';
 	import { news } from '$lib/news';
 	import { objectives } from '$lib/objectives';
 </script>
-
-<svelte:head>
-	<title>Mi2 | {$t('homepage.title')}</title>
-</svelte:head>
 
 <!-- # HERO -->
 <section id="hero">
@@ -22,8 +17,8 @@
 
 	<div class="container">
 		<hgroup>
-			<h1>{$t('homepage.title')}</h1>
-			<h2>{@html $t('homepage.welcome', { name: 'Guillaume' })}</h2>
+			<h1>Titre</h1>
+			<h2>Lorem</h2>
 		</hgroup>
 		<ContactBtn />
 	</div>
