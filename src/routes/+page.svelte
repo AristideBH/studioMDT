@@ -3,20 +3,24 @@
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
 	import { slugify } from '$lib/js/utils';
 
-	import PocketBase from 'pocketbase';
-	const pb = new PocketBase('http://127.0.0.1:8090');
-	const allCategories = pb.collection('categories').getList(1, 20);
-	const pinnedProducts = pb.collection('pinnedProducts').getList(1, 20, {
-		expand: 'title'
-	});
+	import { Directus } from '@directus/sdk';
+	const directus = new Directus('https://n7egmyag.directus.app');
 
-	const getPinnedProductByID = (id: number) => {
-		let product = pb.collection('pinnedProducts').getOne(id);
-		return product.data;
-	};
+	const products = directus.items('products').readByQuery({
+		sort: ['id'],
+		filter: {
+			pinned: {
+				_eq: 'true'
+			}
+		}
+	});
 
 	import { news } from '$lib/news';
 </script>
+
+<svelte:head>
+	<title>Studio MDT</title>
+</svelte:head>
 
 <!-- # HERO -->
 <section id="hero">
@@ -28,22 +32,7 @@
 			<h1>Création & design</h1>
 			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur autem esse</p>
 
-			<div class="container">
-				{#await allCategories}
-					<p>chargement des Catégories...</p>
-				{:then value}
-					<ul class="flex gap">
-						{#each value.items as item}
-							<li>
-								<a href="/produits?tags={slugify(item.name)}">{item.name}</a>
-							</li>
-						{/each}
-					</ul>
-				{:catch error}
-					<p>une erreur s'est produite dans le cgargment des filtres</p>
-					<code>{error}</code>
-				{/await}
-			</div>
+			<div class="container" />
 		</hgroup>
 	</div>
 
@@ -62,25 +51,24 @@
 			</p>
 		</div>
 
-		{#await pinnedProducts}
-			<p>chargement des Catégories...</p>
+		{#await products}
+			<p>chargement des produits...</p>
 		{:then value}
 			<ul class="flex gap">
-				{#each value.items as item}
+				{#each value.data as item}
 					<li>
-						{console.log(item)}
-						<p>{item.id}</p>
-						<!-- {#await getPinnedProductByID(item.id) then value}
-							<img src="http://127.0.0.1:8090/api/files/pinnedProducts/{item.id}/{value}" alt="" />
-						{/await} -->
+						<a href="/produits/{slugify(item.title)}">
+							<p>{item.title}</p>
+							<img src="https://n7egmyag.directus.app/assets/{item.vignette}/" alt="" />
+						</a>
 					</li>
 				{/each}
 			</ul>
 		{:catch error}
-			<p>une erreur s'est produite dans le cgargment des filtres</p>
+			<p>une erreur s'est produite dans le chargment des produits</p>
 			<code>{error}</code>
 		{/await}
-		<a href="/" class="mx:auto outline" role="button"> découvrir le reste</a>
+		<a href="/produits" class="mx:auto outline" role="button"> découvrir le reste</a>
 	</div>
 </section>
 
