@@ -18,6 +18,10 @@
 	import { news } from '$lib/news';
 </script>
 
+<svelte:head>
+	<title>Studio MDT</title>
+</svelte:head>
+
 <!-- # HERO -->
 <section id="hero">
 	<img src="hero.jpg" alt="" />

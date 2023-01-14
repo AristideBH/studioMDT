@@ -13,7 +13,6 @@
 
 <svelte:head>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Blinker" />
-	<title>Studio MDT</title>
 </svelte:head>
 
 <Header />
