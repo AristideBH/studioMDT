@@ -3,9 +3,11 @@ import { prisma } from '$lib/server/prisma';
 
 export const load = (async () => {
 
-  const articles = await prisma.article.findMany();
+  const products = await prisma.product.findMany()
+
   return {
-    articles
+    products
   }
+
 
 }) satisfies PageServerLoad;
