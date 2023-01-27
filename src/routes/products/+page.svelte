@@ -10,10 +10,13 @@
 	{JSON.stringify($GetAllProducts.data?.products?.edges, undefined, 2)}
 </pre> -->
 
-<section class="container">
-	{#each $GetAllProducts.data?.products?.edges as { node }}
-		<a href={node.uri}>
-			<h2>{node.title}</h2>
-		</a>
-	{/each}
-</section>
+{#if ($GetAllProducts.fetching = true)}
+	<!-- content here -->
+	<section class="container">
+		{#each $GetAllProducts.data?.products?.edges as { node }}
+			<a href={node.uri}>
+				<h2>{node.title}</h2>
+			</a>
+		{/each}
+	</section>
+{/if}
