@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 export const menuItems = [
-	{ text: 'Produits', url: '/produits' },
+	{ text: 'Produits', url: '/products' },
 	{ text: 'Collaborations', url: '/' },
 	{ text: 'À propos', url: '/a-propos' }
 ];
