@@ -10,7 +10,7 @@
 	{JSON.stringify($GetAllProducts.data?.products?.edges, undefined, 2)}
 </pre> -->
 
-{#if ($GetAllProducts.fetching = true)}
+{#if $GetAllProducts.fetching === true}
 	<!-- content here -->
 	<section class="container">
 		{#each $GetAllProducts.data?.products?.edges as { node }}
