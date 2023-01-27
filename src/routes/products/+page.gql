@@ -1,0 +1,11 @@
+query GetAllProducts {
+	products {
+		edges {
+			node {
+				title
+				uri
+				slug
+			}
+		}
+	}
+}
