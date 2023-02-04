@@ -7600,10 +7600,19 @@ input ProductToTermNodeConnectionWhereArgs {
 """Field Group"""
 type Product_DataProduct implements AcfFieldGroup {
   """"""
+  description: String
+
+  """"""
   featured: MediaItem
 
   """The name of the ACF Field Group"""
   fieldGroupName: String
+
+  """"""
+  gallery: [MediaItem]
+
+  """"""
+  type: ProductsCat
 }
 
 """The productsCat type"""

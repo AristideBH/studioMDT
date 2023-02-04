@@ -17,6 +17,12 @@ export const _houdini_load = graphql(`
           altText
           caption
         }
+        description
+        type {
+          name
+          slug
+          uri
+        }
       }
     }
   }
