@@ -2,7 +2,7 @@
 	import { menu } from '$lib/js/menu';
 </script>
 
-<div class="menu-icon" class:active={$menu} on:click={menu.toggle}>
+<div class="menu-icon" class:active={$menu} on:click={menu.toggle} on:keypress={menu.toggle}>
 	<div>
 		<span />
 		<span />

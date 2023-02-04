@@ -61,13 +61,6 @@
 		color: var(--h1-color);
 	}
 
-	img {
-		height: var(--logo-height);
-		min-width: 163px;
-		object-fit: contain;
-		aspect-ratio: 163 / 71;
-	}
-
 	nav {
 		margin-right: auto;
 		margin-left: auto;
