@@ -5,6 +5,10 @@
 	$: ({ GetProductBySlug } = data);
 </script>
 
+<svelte:head>
+	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
+</svelte:head>
+
 <!-- <pre>
 	{JSON.stringify($GetProductBySlug.data, undefined, 2)}
 </pre> -->
