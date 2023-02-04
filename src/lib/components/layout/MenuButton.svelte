@@ -12,7 +12,7 @@
 <style lang="scss">
 	.menu-icon {
 		--line-color: var(--primary);
-		--back-color: var(--h1-color);
+		--back-color: var(--primary-inverse);
 		position: relative;
 		width: calc(1.075em + 2rem);
 		height: calc(1.07em + 2rem);
