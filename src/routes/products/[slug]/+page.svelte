@@ -9,9 +9,9 @@
 	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
 </svelte:head>
 
-<!-- <pre>
+<pre class="container">
 	{JSON.stringify($GetProductBySlug.data, undefined, 2)}
-</pre> -->
+</pre>
 
 <article class="container ">
 	<main>
@@ -22,6 +22,16 @@
 
 		{#if $GetProductBySlug.data?.product?.data_product?.description}
 			<p>{@html $GetProductBySlug.data?.product?.data_product?.description}</p>
+		{/if}
+
+		{#if $GetProductBySlug.data?.product?.data_product?.gallery}
+			<ul class="gallery">
+				{#each $GetProductBySlug.data?.product?.data_product?.gallery as item}
+					<li>
+						<img src={item.sourceUrl} alt={item.altText} sizes={item.sizes} srcset={item.srcSet} />
+					</li>
+				{/each}
+			</ul>
 		{/if}
 	</main>
 
@@ -61,5 +71,8 @@
 		img {
 			width: 100%;
 		}
+	}
+
+	.gallery {
 	}
 </style>

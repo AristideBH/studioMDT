@@ -23,6 +23,11 @@ export const _houdini_load = graphql(`
           slug
           uri
         }
+        gallery {
+          sourceUrl
+          sizes
+          srcSet
+        }
       }
     }
   }
