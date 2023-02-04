@@ -8,10 +8,10 @@
 <svelte:head>
 	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
 </svelte:head>
-
+<!-- 
 <pre class="container">
 	{JSON.stringify($GetProductBySlug.data, undefined, 2)}
-</pre>
+</pre> -->
 
 <article class="container ">
 	<main>
@@ -65,7 +65,7 @@
 
 	aside {
 		flex: 1;
-		min-width: 200px;
+		min-width: 175px;
 		margin-top: 1em;
 
 		img {
