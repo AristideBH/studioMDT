@@ -7078,7 +7078,7 @@ interface Previewable {
 }
 
 """The product type"""
-type Product implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithContentEditor & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
+type Product implements ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithContentEditor & NodeWithFeaturedImage & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable {
   """The content of the post."""
   content(
     """Format of the field output"""
@@ -7150,6 +7150,19 @@ type Product implements ContentNode & DatabaseIdentifier & MenuItemLinkable & No
     """The number of items to return before the referenced "before" cursor"""
     last: Int
   ): ContentNodeToEnqueuedStylesheetConnection
+
+  """
+  Connection between the NodeWithFeaturedImage type and the MediaItem type
+  """
+  featuredImage: NodeWithFeaturedImageToMediaItemConnectionEdge
+
+  """
+  The database identifier for the featured image node assigned to the content node
+  """
+  featuredImageDatabaseId: Int
+
+  """Globally unique ID of the featured image assigned to the node"""
+  featuredImageId: ID
 
   """
   The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table.

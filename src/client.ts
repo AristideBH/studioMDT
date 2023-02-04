@@ -6,7 +6,7 @@ const requestHandler: RequestHandler = async ({
 	variables = {},
 	metadata
 }) => {
-	const url = 'http://vvictor.local/graphql';
+	const url = 'https://admin.studio-mdt.fr/graphql';
 	const result = await fetch(url, {
 		method: 'POST',
 		headers: {
