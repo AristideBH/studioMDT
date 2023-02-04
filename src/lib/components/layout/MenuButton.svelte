@@ -11,12 +11,14 @@
 
 <style lang="scss">
 	.menu-icon {
-		--line-color: var(--h1-color);
-		--back-color: var(--primary);
+		--line-color: var(--primary);
+		--back-color: var(--h1-color);
 		position: relative;
 		width: calc(1.075em + 2rem);
 		height: calc(1.07em + 2rem);
 		cursor: pointer;
+		background-color: var(--back-color);
+		border-radius: 500px;
 
 		div {
 			margin: auto;
