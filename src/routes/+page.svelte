@@ -68,7 +68,8 @@
 			<p>une erreur s'est produite dans le chargment des produits</p>
 			<code>{error}</code>
 		{/await}
-		<a href="/produits" class="mx:auto outline" role="button"> découvrir le reste</a>
+
+		<a href="/products" class="mx:auto outline" role="button"> découvrir le reste</a>
 	</div>
 </section>
 
@@ -129,10 +130,10 @@
 		}
 	}
 
-	#products .grid {
-		--grid-spacing-horizontal: 3rem;
-		--grid-spacing-vertical: 1.5rem;
-	}
+	// #products .grid {
+	// 	--grid-spacing-horizontal: 3rem;
+	// 	--grid-spacing-vertical: 1.5rem;
+	// }
 
 	#data {
 		padding-block: 4rem;

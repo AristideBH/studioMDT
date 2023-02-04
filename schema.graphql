@@ -3,6 +3,12 @@ schema {
   mutation: RootMutation
 }
 
+"""A Field Group registered by ACF"""
+interface AcfFieldGroup {
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+}
+
 """
 Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from.
 """
@@ -7091,6 +7097,11 @@ type Product implements ContentNode & DatabaseIdentifier & MenuItemLinkable & No
   """The name of the Content Type the node belongs to"""
   contentTypeName: String!
 
+  """
+  Added to the GraphQL Schema because the ACF Field Group &quot;Produits&quot; was set to Show in GraphQL.
+  """
+  data_product: Product_DataProduct
+
   """The unique identifier stored in the database"""
   databaseId: Int!
 
@@ -7584,6 +7595,15 @@ input ProductToTermNodeConnectionWhereArgs {
 
   """Whether to prime meta caches for matched terms. Default true."""
   updateTermMetaCache: Boolean
+}
+
+"""Field Group"""
+type Product_DataProduct implements AcfFieldGroup {
+  """"""
+  featured: MediaItem
+
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
 }
 
 """The productsCat type"""

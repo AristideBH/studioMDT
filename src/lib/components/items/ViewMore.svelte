@@ -40,7 +40,7 @@
 			transform: translate(-50%, -50%) rotate(45deg);
 			border-top: transparent;
 			border-left: transparent;
-			animation: scroll-down 1s ease-in-out infinite;
+			animation: scroll-down 2.5s linear infinite;
 		}
 	}
 </style>
