@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import ContactBtn from '$lib/components/items/ContactBtn.svelte';
 	import Menu from '$lib/components/layout/Menu.svelte';
 	import MobileMenu from '$lib/components/layout/MobileMenu.svelte';
@@ -9,10 +9,18 @@
 
 	let bodyScroll = new scroll();
 	$: $menu === true ? bodyScroll.disable() : bodyScroll.enable();
+
+	let header: HTMLElement;
+	let header_height: number;
+	$: if (header) {
+		header_height = header.getBoundingClientRect().height;
+		document.documentElement.style.setProperty('--header-height', header_height + 'px');
+	}
+	$: console.log(header_height);
 </script>
 
-<header class="container-fluid">
-	<a href="/">
+<header class="container-fluid" bind:this={header}>
+	<a href="/" on:click={menu.close}>
 		<div class="logo font">Studio.<br />MDT</div>
 	</a>
 
