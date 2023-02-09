@@ -7628,6 +7628,9 @@ type Product_DataProduct implements AcfFieldGroup {
   description: String
 
   """"""
+  drawing: MediaItem
+
+  """"""
   featured: MediaItem
 
   """The name of the ACF Field Group"""
@@ -7635,6 +7638,9 @@ type Product_DataProduct implements AcfFieldGroup {
 
   """"""
   gallery: [MediaItem]
+
+  """"""
+  hero: MediaItem
 
   """"""
   type: ProductsCat

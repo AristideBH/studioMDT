@@ -3,32 +3,41 @@ import { error } from '@sveltejs/kit'
 import type { GetProductBySlugVariables } from './$houdini'
 
 export const _houdini_load = graphql(`
-  query GetProductBySlug($id: ID = "vase-s") {
+  
+query GetProductBySlug($id: ID = "vase-s") {
     product(id: $id, idType: SLUG) {
       title
       slug
       uri
       status
       data_product {
-        featured {
-          sourceUrl
-          sizes
-          srcSet
-          altText
-          caption
-        }
-        description
-        type {
-          name
-          slug
-          uri
-        }
-        gallery {
-          sourceUrl
-          sizes
-          srcSet
-        }
-      }
+            description
+            type{
+              name
+              slug
+              uri
+            }
+            featured {
+              sourceUrl
+              sizes
+              srcSet
+            }
+            drawing {
+              sourceUrl
+              sizes
+              srcSet
+            }
+            hero{
+              sourceUrl
+              sizes
+              srcSet
+            }
+            gallery{
+              sourceUrl
+              sizes
+              srcSet
+            }
+          }
     }
   }
 `)
