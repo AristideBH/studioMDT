@@ -1,0 +1,21 @@
+query GetPinnedProducts {
+	options {
+		optionsPage {
+			pinnedproducts {
+				... on Product {
+					databaseId
+					title
+					uri
+					slug
+					data_product {
+						featured {
+							sourceUrl
+							sizes
+							srcSet
+						}
+					}
+				}
+			}
+		}
+	}
+}

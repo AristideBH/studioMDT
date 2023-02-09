@@ -1,21 +1,15 @@
 <script lang="ts">
 	import PanelWrapper from '$lib/components/items/PanelWrapper.svelte';
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
-	import { slugify } from '$lib/js/utils';
+	// import { slugify } from '$lib/js/utils';
+	import type { PageData } from './$houdini';
+	export let data: PageData;
 
-	import { Directus } from '@directus/sdk';
-	const directus = new Directus('https://n7egmyag.directus.app');
-
-	const products = directus.items('products').readByQuery({
-		sort: ['id'],
-		filter: {
-			pinned: {
-				_eq: 'true'
-			}
-		}
-	});
+	// pull the store reference from the route props
+	$: ({ GetPinnedProducts } = data);
 
 	import { news } from '$lib/news';
+	$: console.log($GetPinnedProducts);
 </script>
 
 <svelte:head>
@@ -51,23 +45,27 @@
 			</p>
 		</div>
 
-		{#await products}
-			<p>chargement des produits...</p>
-		{:then value}
-			<ul class="flex gap">
-				{#each value.data as item}
+		<!-- <pre>
+			{JSON.stringify($GetPinnedProducts, undefined, 2)}
+		</pre> -->
+
+		{#if !$GetPinnedProducts.fetching}
+			<ul class="products-list">
+				{#each $GetPinnedProducts.data?.options?.optionsPage?.pinnedproducts as item}
 					<li>
-						<a href="/produits/{slugify(item.title)}">
-							<p>{item.title}</p>
-							<img src="https://n7egmyag.directus.app/assets/{item.vignette}/" alt="" />
+						<a href="/produits/{item.slug}">
+							<img
+								src=""
+								alt=""
+								sizes={item.data_product.featured.sizes}
+								srcset={item.data_product.featured.srcSet}
+							/>
+							<h2>{item.title}</h2>
 						</a>
 					</li>
 				{/each}
 			</ul>
-		{:catch error}
-			<p>une erreur s'est produite dans le chargment des produits</p>
-			<code>{error}</code>
-		{/await}
+		{:else}{/if}
 
 		<a href="/products" class="mx:auto outline" role="button"> découvrir le reste</a>
 	</div>
@@ -146,6 +144,22 @@
 
 			p {
 				max-width: max(640px, 65vh);
+			}
+		}
+
+		.products-list {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+			li {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				h2 {
+					margin-top: 1em;
+					text-align: center;
+				}
 			}
 		}
 	}

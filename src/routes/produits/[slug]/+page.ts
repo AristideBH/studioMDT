@@ -1,19 +1,44 @@
-import type { PageLoad } from './$types';
-import { Directus } from '@directus/sdk';
+import { graphql } from '$houdini'
+import { error } from '@sveltejs/kit'
+import type { GetProductBySlugVariables } from './$houdini'
 
+export const _houdini_load = graphql(`
+  query GetProductBySlug($id: ID = "vase-s") {
+    product(id: $id, idType: SLUG) {
+      title
+      slug
+      uri
+      status
+      data_product {
+        featured {
+          sourceUrl
+          sizes
+          srcSet
+          altText
+          caption
+        }
+        description
+        type {
+          name
+          slug
+          uri
+        }
+        gallery {
+          sourceUrl
+          sizes
+          srcSet
+        }
+      }
+    }
+  }
+`)
 
-export const load = (async ({ params }) => {
-  const directus = new Directus('https://n7egmyag.directus.app');
-  const slug = params.slug;
-  const product = await directus.items('products').readByQuery({
-    filter: {
-      title: {
-        _eq: slug,
-      },
-    },
-  });
-
-  return { product };
-
-
-}) satisfies PageLoad;
+// This is the function for the AllItems query.
+// Query variable functions must be named _<QueryName>Variables.
+export const _GetProductBySlugVariables: GetProductBySlugVariables = ({ params }) => {
+  // make sure we recognize the value
+  if (!params.slug) throw error(404, { message: "No slug has been provided" });
+  return {
+    id: params.slug
+  }
+}

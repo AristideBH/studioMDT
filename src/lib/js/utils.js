@@ -3,7 +3,7 @@ import { browser } from '$app/environment';
 let scrollTop = 0;
 let scrollLeft = 0;
 
-export const scroll = class Rectangle {
+export const scroll = class scrollUtils {
 	root;
 	overflowClass = 'overflow:hidden';
 	constructor() {

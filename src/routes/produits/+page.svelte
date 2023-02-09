@@ -1,47 +1,21 @@
 <script lang="ts">
-	import { slugify } from '$lib/js/utils';
+	import type { PageData } from './$houdini';
 
-	import { slide } from 'svelte/transition';
+	export let data: PageData;
 
-	import { Directus } from '@directus/sdk';
-	const directus = new Directus('https://n7egmyag.directus.app');
-
-	const products = directus.items('products').readByQuery({
-		sort: ['id']
-	});
-	const categories = directus.items('categories').readByQuery({ limit: 10 });
+	$: ({ GetAllProducts } = data);
 </script>
 
-<div class="container">
-	{#await categories}
-		<p transition:slide>chargement des filtres...</p>
-	{:then value}
-		<label for="categories">
-			Catégories :
-			<select name="categories" id="categories">
-				<option value="">Tous les projets</option>
-				{#each value.data as item}
-					<option value={item.id}>{item.name}</option>
-				{/each}
-			</select>
-		</label>
-	{:catch error}
-		<p transition:slide>une erreur s'est produite dans le cgargment des filtres</p>
-		<code>{error}</code>
-	{/await}
+<!-- <pre>
+	{JSON.stringify($GetAllProducts.data?.products?.edges, undefined, 2)}
+</pre> -->
 
-	{#await products}
-		<p transition:slide>chargement...</p>
-	{:then value}
-		{#each value.data as item}
-			<div transition:slide>
-				<a href="/produits/{slugify(item.title)}">
-					<h2>{item.title}</h2>
-				</a>
-			</div>
+{#if $GetAllProducts.fetching !== true}
+	<section class="container">
+		{#each $GetAllProducts.data?.products?.edges as { node }}
+			<a href="/produits/{node.slug}">
+				<h2>{node.title}</h2>
+			</a>
 		{/each}
-	{:catch error}
-		<p transition:slide>une erreur s'est produite</p>
-		<code>{error}</code>
-	{/await}
-</div>
+	</section>
+{/if}

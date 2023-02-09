@@ -4670,6 +4670,31 @@ interface OneToOneConnection implements Edge {
   node: Node!
 }
 
+"""Options options."""
+type Options {
+  """
+  Added to the GraphQL Schema because the ACF Field Group &quot;Options Page&quot; was set to Show in GraphQL.
+  """
+  optionsPage: Options_Optionspage
+
+  """"""
+  pageSlug: String
+
+  """"""
+  pageTitle: String
+}
+
+"""Field Group"""
+type Options_Optionspage implements AcfFieldGroup {
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """"""
+  pinnedproducts: [Options_Optionspage_Pinnedproducts]
+}
+
+union Options_Optionspage_Pinnedproducts = Product
+
 """The cardinality of the connection order"""
 enum OrderEnum {
   """Sort the query result set in an ascending order"""
@@ -8609,6 +8634,9 @@ type RootQuery {
     """
     uri: String!
   ): UniformResourceIdentifiable
+
+  """Options options."""
+  options: Options
 
   """An object of the page Type. """
   page(
