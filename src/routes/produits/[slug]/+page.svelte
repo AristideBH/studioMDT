@@ -8,10 +8,14 @@
 <svelte:head>
 	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
 </svelte:head>
-<!-- 
-<pre class="container">
-	{JSON.stringify($GetProductBySlug.data, undefined, 2)}
-</pre> -->
+
+<section class="container ">
+	<img
+		src={$GetProductBySlug.data?.product?.data_product?.hero?.sourceUrl}
+		alt={$GetProductBySlug.data?.product?.data_product?.hero?.alt}
+		srcset={$GetProductBySlug.data?.product?.data_product?.hero?.srcSet}
+	/>
+</section>
 
 <article class="container ">
 	<main>
@@ -45,7 +49,19 @@
 	</aside>
 </article>
 
+<pre class="container">
+	{JSON.stringify($GetProductBySlug.data, undefined, 2)}
+</pre>
+
 <style lang="scss">
+	section {
+		padding-top: 0;
+		img {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			object-fit: cover;
+		}
+	}
 	article {
 		display: flex;
 		margin-top: 2em;
