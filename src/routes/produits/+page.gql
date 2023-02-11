@@ -5,6 +5,25 @@ query GetAllProducts {
 				title
 				uri
 				slug
+				data_product {
+					description
+					type {
+						name
+						slug
+						uri
+					}
+					featured {
+						sourceUrl
+						sizes
+						srcSet
+					}
+
+					gallery {
+						sourceUrl
+						sizes
+						srcSet
+					}
+				}
 			}
 		}
 	}

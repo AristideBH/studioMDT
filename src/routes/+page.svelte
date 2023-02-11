@@ -70,7 +70,7 @@
 			</div>
 		{:else}{/if}
 
-		<a href="/products" class="mx:auto outline" role="button"> découvrir le reste</a>
+		<a href="/produits" class="mx:auto outline" role="button"> découvrir le reste</a>
 	</div>
 </section>
 
@@ -97,11 +97,11 @@
 			mix-blend-mode: color;
 		}
 
-		&:hover {
-			.overlay {
-				opacity: 0.5;
-			}
-		}
+		// &:hover {
+		// 	.overlay {
+		// 		opacity: 0.5;
+		// 	}
+		// }
 
 		.overlay {
 			background-color: var(--dropdown-hover-background-color);
