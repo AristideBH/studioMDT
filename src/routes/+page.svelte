@@ -51,7 +51,7 @@
 
 		{#if !$GetPinnedProducts.fetching}
 			<ul class="products-list">
-				{#each $GetPinnedProducts.data?.options?.optionsPage?.pinnedproducts as item}
+				{#each $GetPinnedProducts.data?.options?.optionsPage?.products?.pinned as item}
 					<li>
 						<a href="/produits/{item.slug}">
 							<img

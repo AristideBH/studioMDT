@@ -4686,14 +4686,68 @@ type Options {
 
 """Field Group"""
 type Options_Optionspage implements AcfFieldGroup {
+  """"""
+  about: [Options_Optionspage_about]
+
   """The name of the ACF Field Group"""
   fieldGroupName: String
 
   """"""
-  pinnedproducts: [Options_Optionspage_Pinnedproducts]
+  hero: Options_Optionspage_Hero
+
+  """"""
+  products: Options_Optionspage_Products
 }
 
-union Options_Optionspage_Pinnedproducts = Product
+"""Field Group"""
+type Options_Optionspage_Hero implements AcfFieldGroup {
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """"""
+  img: MediaItem
+
+  """"""
+  subtitle: String
+
+  """"""
+  title: String
+}
+
+"""Field Group"""
+type Options_Optionspage_Products implements AcfFieldGroup {
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """"""
+  intro: String
+
+  """"""
+  pinned: [Options_Optionspage_Products_Pinned]
+
+  """"""
+  title: String
+}
+
+union Options_Optionspage_Products_Pinned = Product
+
+"""Field Group"""
+type Options_Optionspage_about implements AcfFieldGroup {
+  """Visible sur la page d&#039;accueil"""
+  catchphrase: String
+
+  """Visible sur la page d&#039;accueil"""
+  description: String
+
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """Visible sur la page d&#039;accueil"""
+  img: MediaItem
+
+  """Visible sur la page d&#039;accueil"""
+  title: String
+}
 
 """The cardinality of the connection order"""
 enum OrderEnum {
