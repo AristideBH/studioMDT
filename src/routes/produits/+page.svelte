@@ -37,7 +37,7 @@
 <style lang="scss">
 	.products-list {
 		display: grid;
-		--p-width: 275px;
+		--p-width: 300px;
 		--gap: 2em;
 		grid-template-columns: repeat(
 			auto-fit,
@@ -46,8 +46,8 @@
 		gap: var(--gap);
 		margin-bottom: 3rem;
 
-		@media only screen and (max-width: 56em) {
-			--p-width: 150px;
+		@media only screen and (max-width: 48em) {
+			--p-width: 175px;
 			--gap: 1rem;
 		}
 		article {

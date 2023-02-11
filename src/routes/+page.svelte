@@ -79,7 +79,7 @@
 	<span class="flex:col">
 		<h2>À propos</h2>
 		<PanelWrapper content={news} />
-		<a class="mx:auto outline" role="button" href="/">En savoir plus</a>
+		<a class="mx:auto outline" role="button" href="/a-propos">En savoir plus</a>
 	</span>
 </section>
 
