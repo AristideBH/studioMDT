@@ -2,6 +2,7 @@ import { graphql } from '$houdini'
 import { error } from '@sveltejs/kit'
 import type { GetProductBySlugVariables } from './$houdini'
 
+
 export const _houdini_load = graphql(`
   
 query GetProductBySlug($id: ID = "vase-s") {
@@ -46,7 +47,7 @@ query GetProductBySlug($id: ID = "vase-s") {
 // Query variable functions must be named _<QueryName>Variables.
 export const _GetProductBySlugVariables: GetProductBySlugVariables = ({ params }) => {
   // make sure we recognize the value
-  if (!params.slug) throw error(404, { message: "No slug has been provided" });
+  if (!params.slug || params.slug === "undefined") throw error(404, { message: "No slug has been provided" });
   return {
     id: params.slug
   }

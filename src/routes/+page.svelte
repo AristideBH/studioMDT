@@ -73,7 +73,7 @@
 <!-- # A PROPOS -->
 <section id="about" class="container">
 	<span class="flex:col">
-		<h2>À propos</h2>
+		<h2>En quelques mots...</h2>
 		<!-- <pre>
 			{JSON.stringify($HomepageData.data.options?.optionsPage.about, undefined, 2)}
 		</pre> -->

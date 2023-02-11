@@ -16,6 +16,7 @@ query HomepageData {
 						databaseId
 						title
 						uri
+						slug
 						data_product {
 							type {
 								name

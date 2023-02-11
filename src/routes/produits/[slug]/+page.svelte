@@ -9,10 +9,14 @@
 	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
 </svelte:head>
 
+<!-- <pre>
+			{JSON.stringify($GetProductBySlug, undefined, 2)}
+		</pre> -->
+
 <section class="container">
 	<img
 		src={$GetProductBySlug.data?.product?.data_product?.hero?.sourceUrl}
-		alt={$GetProductBySlug.data?.product?.data_product?.hero?.alt}
+		alt=""
 		srcset={$GetProductBySlug.data?.product?.data_product?.hero?.srcSet}
 	/>
 </section>
