@@ -37,10 +37,14 @@
 <style lang="scss">
 	.products-list {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(calc(250px - 1rem), 1fr));
+		--p-width: 275px;
+		grid-template-columns: repeat(auto-fit, minmax(calc(var(--p-width) - 1rem), 1fr));
 		gap: 2rem;
 		margin-bottom: 3rem;
 
+		@media only screen and (max-width: 56em) {
+			--p-width: 150px;
+		}
 		article {
 			--spacing: 0.75rem;
 			padding: 0;
