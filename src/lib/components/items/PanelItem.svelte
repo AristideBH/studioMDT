@@ -1,7 +1,7 @@
 <script>
 	import { slide } from 'svelte/transition';
 	export let open = false;
-	export let actu = {
+	export let item = {
 		title: 'default title',
 		subtitle: 'default subtitle',
 		content: 'default content',
@@ -12,12 +12,12 @@
 </script>
 
 <article class:open>
-	<summary data-index={actu.id} on:click>{actu.title}</summary>
+	<summary data-index={item.id} on:click>{item.title}</summary>
 	{#if open}
 		<div class="content">
-			<h2>{actu.subtitle}</h2>
+			<h2>{item.subtitle}</h2>
 			<p>
-				{actu.content}
+				{item.content}
 			</p>
 			<img src="/favicon.png" alt="" />
 			<!-- <a href="/">En voir plus</a> -->

@@ -1,6 +1,6 @@
 <script>
 	import PanelItem from './PanelItem.svelte';
-	export let news;
+	export let content;
 	let openedItem = 0;
 	let open = true;
 
@@ -10,22 +10,19 @@
 
 	function handleClick(e) {
 		let targetIndex = e.target.dataset.index;
-		if (targetIndex == openedItem) {
-			// open = false;
-			// openedItem = undefined;
-		} else {
+		if (targetIndex !== openedItem) {
 			open = false;
 			openedItem = targetIndex;
 			open = true;
 		}
 	}
 
-	const newsWid = news.map((o, i) => ({ ...o, id: i }));
+	const content_Ided = content.map((o, i) => ({ ...o, id: i }));
 </script>
 
 <div class="wrapper">
-	{#each newsWid as actu}
-		<PanelItem {actu} open={isActive(actu.id) && open} on:click={handleClick} />
+	{#each content_Ided as item}
+		<PanelItem {item} open={isActive(item.id) && open} on:click={handleClick} />
 	{/each}
 </div>
 
