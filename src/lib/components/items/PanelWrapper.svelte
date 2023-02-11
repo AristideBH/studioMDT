@@ -34,4 +34,10 @@
 		margin-bottom: 3rem;
 		min-height: 500px;
 	}
+
+	@media only screen and (max-width: 56em) {
+		.wrapper {
+			flex-direction: column;
+		}
+	}
 </style>

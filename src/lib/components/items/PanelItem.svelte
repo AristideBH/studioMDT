@@ -45,7 +45,18 @@
 				color: var(--primary);
 			}
 		}
+		@media only screen and (max-width: 56em) {
+			flex-direction: column;
+			summary {
+				writing-mode: unset;
+				text-align: left;
+				transform: unset;
+				padding: 0.85rem 1.5rem 1rem;
+				border-bottom: 1px solid var(--muted-border-color);
+			}
+		}
 	}
+
 	summary {
 		padding: 1.25rem 0.35em;
 		cursor: pointer;

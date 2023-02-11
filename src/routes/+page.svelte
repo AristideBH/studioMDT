@@ -78,7 +78,7 @@
 <section id="about" class="container">
 	<span class="flex:col">
 		<h2>À propos</h2>
-		<PanelWrapper {news} />
+		<PanelWrapper content={news} />
 		<a class="mx:auto outline" role="button" href="/">En savoir plus</a>
 	</span>
 </section>
