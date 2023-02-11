@@ -38,12 +38,17 @@
 	.products-list {
 		display: grid;
 		--p-width: 275px;
-		grid-template-columns: repeat(auto-fit, minmax(calc(var(--p-width) - 1rem), 1fr));
-		gap: 2rem;
+		--gap: 2em;
+		grid-template-columns: repeat(
+			auto-fit,
+			minmax(calc(var(--p-width) - calc(var(--gap) / 2)), 1fr)
+		);
+		gap: var(--gap);
 		margin-bottom: 3rem;
 
 		@media only screen and (max-width: 56em) {
 			--p-width: 150px;
+			--gap: 1rem;
 		}
 		article {
 			--spacing: 0.75rem;
