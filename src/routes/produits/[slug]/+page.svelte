@@ -9,7 +9,7 @@
 	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
 </svelte:head>
 
-<section class="container ">
+<section class="container">
 	<img
 		src={$GetProductBySlug.data?.product?.data_product?.hero?.sourceUrl}
 		alt={$GetProductBySlug.data?.product?.data_product?.hero?.alt}
@@ -17,7 +17,7 @@
 	/>
 </section>
 
-<article class="container ">
+<div class="container hero">
 	<main>
 		<hgroup>
 			<h1>{$GetProductBySlug.data?.product?.title}</h1>
@@ -47,12 +47,11 @@
 			srcset={$GetProductBySlug.data?.product?.data_product?.featured?.srcSet}
 		/>
 	</aside>
-</article>
+</div>
 
-<pre class="container">
+<!-- <pre class="container">
 	{JSON.stringify($GetProductBySlug.data, undefined, 2)}
-</pre>
-
+</pre> -->
 <style lang="scss">
 	section {
 		padding-top: 0;
@@ -62,7 +61,7 @@
 			object-fit: cover;
 		}
 	}
-	article {
+	.container {
 		display: flex;
 		margin-top: 2em;
 		gap: 2em;
