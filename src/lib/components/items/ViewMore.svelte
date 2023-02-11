@@ -1,4 +1,4 @@
-<a class="viewMore" href="#data">&nbsp;</a>
+<a class="viewMore" aria-hidden="true" aria-label="En voir plus" href="#data">&nbsp;</a>
 
 <style lang="scss">
 	@keyframes scroll-down {
