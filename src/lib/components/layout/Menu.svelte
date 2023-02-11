@@ -6,7 +6,7 @@
 <ul class={$$props.class ?? 'desktop'}>
 	{#each menuItems as item}
 		<li>
-			<a href={item.url} on:click={menu.toggle}>
+			<a href={item.url} on:click={menu.close}>
 				{item.text}
 			</a>
 		</li>
