@@ -61,7 +61,7 @@
 			object-fit: cover;
 		}
 	}
-	.container {
+	.hero {
 		display: flex;
 		margin-top: 2em;
 		gap: 2em;
