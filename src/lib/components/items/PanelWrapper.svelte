@@ -18,7 +18,7 @@
 		}
 	}
 
-	const content_Ided = content.map((o, i) => ({ ...o, id: i }));
+	const content_Ided = content.map((o: any, i: number) => ({ ...o, id: i }));
 </script>
 
 <div class="wrapper">
@@ -29,11 +29,10 @@
 
 <style>
 	.wrapper {
-		/* background-color: var(--muted-border-color); */
 		display: flex;
 		gap: 1rem;
 		margin-bottom: 3rem;
-		min-height: 500px;
+		min-height: 560px;
 	}
 
 	@media only screen and (max-width: 56em) {

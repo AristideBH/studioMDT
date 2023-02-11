@@ -40,6 +40,12 @@ button,
 a[role='button'] {
 	border-radius: 100px !important;
 }
+
+// # CARD
+article {
+	border: 1px solid var(--muted-border-color);
+}
+
 // # UTILITY CLASSES
 .flex {
 	display: flex;

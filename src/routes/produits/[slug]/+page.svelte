@@ -19,10 +19,8 @@
 
 <div class="container hero">
 	<main>
-		<hgroup>
-			<h1>{$GetProductBySlug.data?.product?.title}</h1>
-			<kbd>{$GetProductBySlug.data?.product?.data_product?.type?.name}</kbd>
-		</hgroup>
+		<h1>{$GetProductBySlug.data?.product?.title}</h1>
+		<kbd>{$GetProductBySlug.data?.product?.data_product?.type?.name}</kbd>
 
 		{#if $GetProductBySlug.data?.product?.data_product?.description}
 			<p>{@html $GetProductBySlug.data?.product?.data_product?.description}</p>
@@ -67,15 +65,14 @@
 		gap: 2em;
 	}
 
-	hgroup {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 0.5em;
-	}
-
 	main {
 		flex: 3;
+		h1 {
+			margin-bottom: 0;
+		}
+		kbd {
+			margin-block: 0.75em 2rem;
+		}
 	}
 
 	aside {

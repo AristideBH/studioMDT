@@ -6,10 +6,10 @@
 	export let data: PageData;
 
 	// pull the store reference from the route props
-	$: ({ GetPinnedProducts } = data);
+	$: ({ HomepageData } = data);
 
 	import { news } from '$lib/news';
-	// $: console.log($GetPinnedProducts);
+	// $: console.log($HomepageData);
 </script>
 
 <svelte:head>
@@ -45,13 +45,9 @@
 			</p>
 		</div>
 
-		<!-- <pre>
-			{JSON.stringify($GetPinnedProducts, undefined, 2)}
-		</pre> -->
-
-		{#if !$GetPinnedProducts.fetching}
+		{#if !$HomepageData.fetching}
 			<div class="products-list">
-				{#each $GetPinnedProducts.data?.options?.optionsPage?.products?.pinned as item}
+				{#each $HomepageData.data?.options?.optionsPage?.products?.pinned as item}
 					<a href="/produits/{item.slug}">
 						<article>
 							<img
@@ -78,7 +74,10 @@
 <section id="about" class="container">
 	<span class="flex:col">
 		<h2>À propos</h2>
-		<PanelWrapper content={news} />
+		<!-- <pre>
+			{JSON.stringify($HomepageData.data.options?.optionsPage.about, undefined, 2)}
+		</pre> -->
+		<PanelWrapper content={$HomepageData.data.options?.optionsPage.about} />
 		<a class="mx:auto outline" role="button" href="/a-propos">En savoir plus</a>
 	</span>
 </section>
@@ -96,12 +95,6 @@
 		h1 {
 			mix-blend-mode: color;
 		}
-
-		// &:hover {
-		// 	.overlay {
-		// 		opacity: 0.5;
-		// 	}
-		// }
 
 		.overlay {
 			background-color: var(--dropdown-hover-background-color);

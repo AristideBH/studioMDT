@@ -1,24 +1,59 @@
-query GetPinnedProducts {
+query HomepageData {
 	options {
 		optionsPage {
+			hero {
+				title
+				subtitle
+				img {
+					sourceUrl
+					sizes
+					srcSet
+				}
+			}
 			products {
 				pinned {
 					... on Product {
 						databaseId
 						title
 						uri
-						slug
 						data_product {
+							type {
+								name
+							}
 							featured {
 								sourceUrl
 								sizes
 								srcSet
 							}
-							type {
-								name
+							drawing {
+								sourceUrl
+								sizes
+								srcSet
+							}
+							hero {
+								sourceUrl
+								sizes
+								srcSet
+							}
+							gallery {
+								sourceUrl
+								sizes
+								srcSet
 							}
 						}
 					}
+				}
+				intro
+				title
+			}
+			about {
+				catchphrase
+				title
+				description
+				img {
+					sourceUrl
+					sizes
+					srcSet
 				}
 			}
 		}

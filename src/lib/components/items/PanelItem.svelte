@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { fade, fly, slide } from 'svelte/transition';
 	import { clipPath, Direction } from '$lib/js/transition';
 	import { quadOut } from 'svelte/easing';
@@ -11,17 +11,17 @@
 		extLink: '/',
 		id: 0
 	};
-	let status = 'waiting';
-
 	let shown = open;
+	let offsetHeight: number;
 
-	$: console.log('💬:', status);
+	// $: console.log('💬:', offsetHeight);
 </script>
 
-<article class:open={shown}>
+<article class:open={shown} style:max-height="{offsetHeight}px" bind:offsetHeight>
 	<summary data-index={item.id} on:click>{item.title}</summary>
 	{#if open}
 		<div
+			style="flex-grow:0; flex-shrink:1; background-color: var(--code-background-color);"
 			class="flex"
 			in:fade={{ duration: 350, delay: 250 }}
 			out:fade={{ duration: 350 }}
@@ -30,13 +30,14 @@
 		>
 			{#if shown}
 				<div class="content" in:fly|local={{ delay: 250, y: -10 }} out:fade>
-					<h2>{item.subtitle}</h2>
-					<p>
-						{item.content}
-					</p>
-					<img src="/favicon.png" alt="" />
+					<h2>{item.catchphrase}</h2>
+					{#if item.img}
+						<img src={item.img.sourceUrl} alt="" sizes={item.img.sizes} srcset={item.img.srcSet} />
+					{/if}
+					<div class="description">
+						{@html item.description}
+					</div>
 				</div>
-				<!-- <a href="/">En voir plus</a> -->
 			{/if}
 		</div>
 	{/if}
@@ -49,14 +50,12 @@
 		padding: 0px;
 		display: flex;
 		flex-direction: row;
-		// background-color: unset;
 		align-items: stretch;
 		text-align: end;
 		justify-content: start;
 		border: 1px solid var(--muted-border-color);
-		transition: all 500ms;
+		transition: all 500ms ease-out;
 		flex: 0 1 1rem;
-		// overflow: hidden;
 
 		&:hover {
 			color: var(--color);
@@ -96,17 +95,22 @@
 	}
 	.content {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: 0 2rem;
 		align-items: flex-start;
+		align-self: flex-start;
 		text-align: start;
 		border-left: 1px solid var(--muted-border-color);
-		background-color: var(--code-background-color);
 		padding: 0.85rem 1.5rem 1.5rem;
-		max-height: 500px;
+		width: 100%;
+		overflow-y: auto;
 
+		.description {
+			flex: 5;
+		}
 		img {
-			max-height: 200px;
-			margin-bottom: 1rem;
+			flex: 1;
 		}
 	}
 </style>
