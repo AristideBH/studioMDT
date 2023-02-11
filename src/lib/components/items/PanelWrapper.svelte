@@ -32,7 +32,8 @@
 		display: flex;
 		gap: 1rem;
 		margin-bottom: 3rem;
-		min-height: 560px;
+		--mH: 560px;
+		min-height: var(--mH);
 	}
 
 	@media only screen and (max-width: 56em) {

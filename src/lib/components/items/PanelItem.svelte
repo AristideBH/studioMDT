@@ -17,12 +17,12 @@
 	// $: console.log('💬:', offsetHeight);
 </script>
 
-<article class:open={shown} style:max-height="{offsetHeight}px" bind:offsetHeight>
+<article class:open={shown}>
 	<summary data-index={item.id} on:click>{item.title}</summary>
 	{#if open}
 		<div
-			style="flex-grow:0; flex-shrink:1; background-color: var(--code-background-color);"
-			class="flex"
+			style=""
+			class=" content-wrapper "
 			in:fade={{ duration: 350, delay: 250 }}
 			out:fade={{ duration: 350 }}
 			on:introend={() => (shown = true)}
@@ -56,6 +56,7 @@
 		border: 1px solid var(--muted-border-color);
 		transition: all 500ms ease-out;
 		flex: 0 1 1rem;
+		max-height: var(--mH);
 
 		&:hover {
 			color: var(--color);
@@ -92,6 +93,14 @@
 		font-weight: 900;
 		text-transform: uppercase;
 		background: var(--card-background-color);
+	}
+
+	.content-wrapper {
+		display: flex;
+		flex-grow: 0;
+		flex-shrink: 1;
+		background-color: var(--code-background-color);
+		overflow-y: scroll;
 	}
 	.content {
 		display: flex;
