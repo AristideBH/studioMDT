@@ -1,15 +1,16 @@
-<script>
+<script lang="ts">
 	import PanelItem from './PanelItem.svelte';
 	export let content;
 	let openedItem = 0;
 	let open = true;
 
-	const isActive = (i) => {
+	const isActive = (i: number) => {
 		return i == openedItem ? true : false;
 	};
 
-	function handleClick(e) {
-		let targetIndex = e.target.dataset.index;
+	function handleClick(e: Event) {
+		if (!e.target) return;
+		let targetIndex = e.target?.dataset?.index;
 		if (targetIndex !== openedItem) {
 			open = false;
 			openedItem = targetIndex;
