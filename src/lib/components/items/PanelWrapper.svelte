@@ -31,9 +31,9 @@
 
 <style>
 	.wrapper {
-		background-color: var(--muted-border-color);
+		/* background-color: var(--muted-border-color); */
 		display: flex;
-		gap: 1px;
+		gap: 1rem;
 		margin-bottom: 3rem;
 		min-height: 500px;
 	}

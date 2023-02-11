@@ -9,7 +9,7 @@
 	$: ({ GetPinnedProducts } = data);
 
 	import { news } from '$lib/news';
-	$: console.log($GetPinnedProducts);
+	// $: console.log($GetPinnedProducts);
 </script>
 
 <svelte:head>
@@ -50,21 +50,24 @@
 		</pre> -->
 
 		{#if !$GetPinnedProducts.fetching}
-			<ul class="products-list">
+			<div class="products-list">
 				{#each $GetPinnedProducts.data?.options?.optionsPage?.products?.pinned as item}
-					<li>
-						<a href="/produits/{item.slug}">
+					<a href="/produits/{item.slug}">
+						<article>
 							<img
 								src=""
 								alt=""
 								sizes={item.data_product.featured.sizes}
 								srcset={item.data_product.featured.srcSet}
 							/>
-							<h2>{item.title}</h2>
-						</a>
-					</li>
+							<footer>
+								<h2>{item.title}</h2>
+								<kbd>{item.data_product.type.name}</kbd>
+							</footer>
+						</article>
+					</a>
 				{/each}
-			</ul>
+			</div>
 		{:else}{/if}
 
 		<a href="/products" class="mx:auto outline" role="button"> découvrir le reste</a>
@@ -149,16 +152,26 @@
 
 		.products-list {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+			grid-template-columns: repeat(auto-fill, minmax(calc(350px - 1rem), 1fr));
+			gap: 2rem;
+			margin-bottom: 3rem;
 
-			li {
-				display: flex;
-				align-items: center;
-				justify-content: center;
+			article {
+				--spacing: 0.75rem;
+				padding: 0;
+				margin: 0;
+				img {
+					width: 100%;
+					padding: 1rem 2rem;
+				}
+			}
+
+			footer {
+				padding-block: var(--spacing) calc(var(--spacing) * 2);
+				margin: 0;
 
 				h2 {
-					margin-top: 1em;
-					text-align: center;
+					margin: 0;
 				}
 			}
 		}

@@ -20,16 +20,18 @@
 				{actu.content}
 			</p>
 			<img src="/favicon.png" alt="" />
-			<a href="/">En voir plus</a>
+			<!-- <a href="/">En voir plus</a> -->
 		</div>
 	{/if}
 </article>
 
 <style lang="scss">
 	article {
+		margin-block: 0;
+		padding: 0px;
 		display: flex;
 		flex-direction: row;
-		background-color: var(--background-color);
+		// background-color: var(--background-color);
 		align-items: stretch;
 		text-align: end;
 		justify-content: center;
@@ -58,7 +60,8 @@
 		flex-direction: column;
 		align-items: flex-start;
 		text-align: start;
-		background-color: var(--code-background-color);
+		border-left: 1px solid var(--muted-border-color);
+		// background-color: var(--code-background-color);
 		padding: 0.85rem 1.5rem 1.5rem;
 
 		img {

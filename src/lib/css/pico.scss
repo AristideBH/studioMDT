@@ -40,7 +40,7 @@ $enable-classes: true;
 
 // Components
 // @import "../../../node_modules/@picocss/pico/scss/components/accordion"; // details, summary
-// @import "../../../node_modules/@picocss/pico/scss/components/card"; // article
+@import '../../../node_modules/@picocss/pico/scss/components/card'; // article
 // @import "../../../node_modules/@picocss/pico/scss/components/modal"; // dialog
 // @import "../../../node_modules/@picocss/pico/scss/components/nav"; // nav
 @import '../../../node_modules/@picocss/pico/scss/components/progress'; // progress
