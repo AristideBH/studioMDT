@@ -37,7 +37,7 @@
 <style lang="scss">
 	.products-list {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(calc(350px - 1rem), 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(calc(250px - 1rem), 1fr));
 		gap: 2rem;
 		margin-bottom: 3rem;
 
