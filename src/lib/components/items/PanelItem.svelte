@@ -99,7 +99,8 @@
 		display: flex;
 		flex-grow: 0;
 		flex-shrink: 1;
-		background-color: var(--code-background-color);
+		// background-color: var(--code-background-color);
+		background-color: var(--card-sectionning-background-color);
 		overflow-y: scroll;
 	}
 	.content {
