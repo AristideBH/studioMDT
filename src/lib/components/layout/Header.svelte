@@ -16,7 +16,7 @@
 		header_height = header.getBoundingClientRect().height;
 		document.documentElement.style.setProperty('--header-height', header_height + 'px');
 	}
-	$: console.log(header_height);
+	// $: console.log(header_height);
 </script>
 
 <header class="container-fluid" bind:this={header}>

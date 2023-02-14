@@ -47,7 +47,7 @@ $enable-classes: true;
 @import '../../../node_modules/@picocss/pico/scss/components/dropdown'; // dropdown
 
 // Utilities
-// @import "../../../node_modules/@picocss/pico/scss/utilities/loading"; // aria-busy=true
+@import '../../../node_modules/@picocss/pico/scss/utilities/loading'; // aria-busy=true
 // @import "../../../node_modules/@picocss/pico/scss/utilities/tooltip"; // data-tooltip
 @import '../../../node_modules/@picocss/pico/scss/utilities/accessibility'; // -ms-touch-action, aria-*
 @import '../../../node_modules/@picocss/pico/scss/utilities/reduce-motion'; // prefers-reduced-motion

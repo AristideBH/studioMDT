@@ -16,15 +16,21 @@
 	<title>Studio MDT</title>
 </svelte:head>
 
+<!-- <pre>
+{JSON.stringify($HomepageData.data?.options?.optionsPage?.products, undefined, 2)}
+</pre> -->
+
 <!-- # HERO -->
 <section id="hero">
-	<img src="hero.jpg" alt="" />
+	{#if $HomepageData.data?.options?.optionsPage?.hero?.img}
+		<img src={$HomepageData.data?.options?.optionsPage?.hero?.img.sourceUrl} alt="" />
+	{/if}
 	<div class="overlay" />
 
 	<div class="container">
 		<hgroup>
-			<h1>Création & design</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur autem esse</p>
+			<h1>{$HomepageData.data?.options?.optionsPage?.hero?.title}</h1>
+			<p>{$HomepageData.data?.options?.optionsPage?.hero?.subtitle}</p>
 
 			<div class="container" />
 		</hgroup>
@@ -37,11 +43,9 @@
 <section id="data">
 	<div class="container flex:col">
 		<div class="title flex:col">
-			<h2>Quelques chiffres</h2>
+			<h2>{$HomepageData.data?.options?.optionsPage?.products?.title}</h2>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus eaque velit veniam
-				animi maiores vitae, suscipit impedit, distinctio ab dolorem repudiandae illum totam
-				recusandae laborum! Minima officia voluptatibus amet corporis?
+				{$HomepageData.data?.options?.optionsPage?.products?.intro}
 			</p>
 		</div>
 
@@ -64,7 +68,9 @@
 					</a>
 				{/each}
 			</div>
-		{:else}{/if}
+		{:else}
+			<span aria-busy="true" />
+		{/if}
 
 		<a href="/produits" class="mx:auto outline" role="button"> découvrir le reste</a>
 	</div>
