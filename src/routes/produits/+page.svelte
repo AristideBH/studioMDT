@@ -15,25 +15,25 @@
 </pre> -->
 
 <section class="container ">
-	{#if $GetAllProducts.data.types}
-		<aside class="filter-list">
-			<h2>Filtrer par matière:</h2>
-			<label>
-				<input type="radio" bind:group={selectedTypes} name="types" value="all" />
-				Tous
-			</label>
-			{#each $GetAllProducts.data.types.nodes as type, i}
-				{#if type.count}
-					<label>
-						<input type="radio" bind:group={selectedTypes} name="types" value={type.slug} />
-						{type.name}
-					</label>
-				{/if}
-			{/each}
-		</aside>
-	{/if}
-
 	{#if $GetAllProducts.fetching !== true}
+		{#if $GetAllProducts.data.types}
+			<aside class="filter-list">
+				<h2>Filtrer par matière:</h2>
+				<label>
+					<input type="radio" bind:group={selectedTypes} name="types" value="all" />
+					Tous
+				</label>
+				{#each $GetAllProducts.data.types.nodes as type, i}
+					{#if type.count}
+						<label>
+							<input type="radio" bind:group={selectedTypes} name="types" value={type.slug} />
+							{type.name}
+						</label>
+					{/if}
+				{/each}
+			</aside>
+		{/if}
+
 		<main class=" products-list">
 			{#each $GetAllProducts.data?.products?.edges as { node }}
 				{#if selectedTypes === 'all' || selectedTypes === node.data_product.type.slug}
