@@ -65,7 +65,9 @@
 
 							<footer>
 								<h2>{node.title}</h2>
-								<kbd>{node.data_product.type.name}</kbd>
+								{#each node.data_product?.type as type}
+									<kbd> {type.name}</kbd>
+								{/each}
 							</footer>
 						</article>
 					</a>

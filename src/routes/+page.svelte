@@ -1,6 +1,7 @@
 <script lang="ts">
 	import PanelWrapper from '$lib/components/items/PanelWrapper.svelte';
 	import ViewMore from '$lib/components/items/ViewMore.svelte';
+	import { error } from '@sveltejs/kit';
 	// import { slugify } from '$lib/js/utils';
 	import type { PageData } from './$houdini';
 	export let data: PageData;
@@ -18,9 +19,9 @@
 	<title>Studio MDT</title>
 </svelte:head>
 
-<!-- <pre>
+<pre>
 {JSON.stringify($HomepageData.data?.options?.optionsPage?.products, undefined, 2)}
-</pre> -->
+</pre>
 
 <!-- # HERO -->
 <section id="hero">
@@ -33,8 +34,6 @@
 		<hgroup>
 			<h1>{hero?.title}</h1>
 			<p>{hero?.subtitle}</p>
-
-			<div class="container" />
 		</hgroup>
 	</div>
 
@@ -51,9 +50,13 @@
 			</p>
 		</div>
 
-		{#if !$HomepageData.fetching && products?.pinned}
+		{#await products}
+			<!-- products is pending -->
+			<span aria-busy="true" />
+		{:then value}
+			<!-- products was fulfilled -->
 			<div class="products-list">
-				{#each products?.pinned as { title, slug, data_product }}
+				{#each value?.pinned as { title, slug, data_product }}
 					<a href="/produits/{slug}">
 						<article>
 							<img
@@ -64,15 +67,18 @@
 							/>
 							<footer>
 								<h2>{title}</h2>
-								<kbd>{data_product.type.name}</kbd>
+								{#each data_product?.type as type}
+									<kbd> {type.name}</kbd>
+								{/each}
 							</footer>
 						</article>
 					</a>
 				{/each}
 			</div>
-		{:else}
-			<span aria-busy="true" />
-		{/if}
+		{:catch error}
+			<!-- products was rejected -->
+			<pre>impossible de récupérer les projets</pre>
+		{/await}
 
 		<a href="/produits" class="mx:auto outline" role="button"> découvrir le reste</a>
 	</div>

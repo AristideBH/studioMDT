@@ -11,9 +11,9 @@
 	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
 </svelte:head>
 
-<!-- <pre>
+<pre>
 			{JSON.stringify($GetProductBySlug, undefined, 2)}
-		</pre> -->
+		</pre>
 {#if product}
 	<section class="container">
 		{#if product.data_product?.hero}
@@ -28,7 +28,9 @@
 			<div class="flex gap:2">
 				<main>
 					<h1>{product.title}</h1>
-					<kbd>{product.data_product?.type?.name}</kbd>
+					{#each product.data_product?.type as type}
+						<kbd> {type.name}</kbd>
+					{/each}
 					{#if product.data_product?.description}
 						<p>{@html product.data_product?.description}</p>
 					{/if}
