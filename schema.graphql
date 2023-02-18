@@ -4694,14 +4694,23 @@ type Options_Optionspage implements AcfFieldGroup {
   """"""
   about: [Options_Optionspage_about]
 
+  """"""
+  ceramiques: [Options_Optionspage_ceramiques]
+
   """The name of the ACF Field Group"""
   fieldGroupName: String
+
+  """"""
+  filaments: [Options_Optionspage_filaments]
 
   """"""
   hero: Options_Optionspage_Hero
 
   """"""
   products: Options_Optionspage_Products
+
+  """"""
+  resines: [Options_Optionspage_resines]
 }
 
 """Field Group"""
@@ -4752,6 +4761,51 @@ type Options_Optionspage_about implements AcfFieldGroup {
 
   """Visible sur la page d&#039;accueil"""
   title: String
+}
+
+"""Field Group"""
+type Options_Optionspage_ceramiques implements AcfFieldGroup {
+  """"""
+  color: String
+
+  """"""
+  description: String
+
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """"""
+  previewcolor: String
+}
+
+"""Field Group"""
+type Options_Optionspage_filaments implements AcfFieldGroup {
+  """"""
+  color: String
+
+  """"""
+  description: String
+
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """"""
+  previewcolor: String
+}
+
+"""Field Group"""
+type Options_Optionspage_resines implements AcfFieldGroup {
+  """"""
+  color: String
+
+  """"""
+  description: String
+
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """"""
+  previewcolor: String
 }
 
 """The cardinality of the connection order"""

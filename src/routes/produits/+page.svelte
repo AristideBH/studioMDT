@@ -8,6 +8,9 @@
 	$: ({ GetAllProducts } = data);
 
 	$: selectedTypes = 'all';
+	const filteredArray = (arr) => arr.filter((obj) => obj.count !== null);
+	$: result = filteredArray($GetAllProducts.data?.types?.nodes);
+	$: console.log(result);
 </script>
 
 <!-- <pre>
@@ -16,9 +19,9 @@
 
 <section class="container ">
 	{#if $GetAllProducts.fetching !== true}
-		{#if $GetAllProducts.data.types}
+		{#if result.length > 1}
 			<aside class="filter-list">
-				<h2>Filtrer par matière:</h2>
+				<h5>Filtrer par matière:</h5>
 				<label>
 					<input type="radio" bind:group={selectedTypes} name="types" value="all" />
 					Tous
@@ -79,14 +82,14 @@
 		display: grid;
 		gap: 1rem;
 		grid-template-columns: 1fr 2fr;
-		grid-template-areas: 'sidebar main';
 	}
 
-	.filter-list {
-		grid-area: sidebar;
+	.filter-list + .products-list {
+		grid-column-start: auto;
 	}
 	.products-list {
-		grid-area: main;
+		grid-column-start: 1;
+		grid-column-end: -1;
 		display: grid;
 		--p-width: 300px;
 		--gap: 2em;
@@ -96,6 +99,10 @@
 		);
 		gap: var(--gap);
 		margin-bottom: 3rem;
+
+		&.full {
+			grid-column-start: 1;
+		}
 
 		@media only screen and (max-width: 48em) {
 			--p-width: 175px;
