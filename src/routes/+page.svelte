@@ -19,82 +19,83 @@
 	<title>Studio MDT</title>
 </svelte:head>
 
-<pre>
+<!-- <pre>
 {JSON.stringify($HomepageData.data?.options?.optionsPage?.products, undefined, 2)}
-</pre>
+</pre> -->
+{#if !$HomepageData.fetching}
+	<!-- # HERO -->
+	<section id="hero">
+		{#if hero?.img}
+			<img src={hero?.img.sourceUrl} alt="" />
+		{/if}
+		<div class="overlay" />
 
-<!-- # HERO -->
-<section id="hero">
-	{#if hero?.img}
-		<img src={hero?.img.sourceUrl} alt="" />
-	{/if}
-	<div class="overlay" />
-
-	<div class="container">
-		<hgroup>
-			<h1>{hero?.title}</h1>
-			<p>{hero?.subtitle}</p>
-		</hgroup>
-	</div>
-
-	<ViewMore />
-</section>
-
-<!-- # DATA -->
-<section id="data">
-	<div class="container flex:col">
-		<div class="title flex:col">
-			<h2>{products?.title}</h2>
-			<p>
-				{products?.intro}
-			</p>
+		<div class="container">
+			<hgroup>
+				<h1>{hero?.title}</h1>
+				<p>{hero?.subtitle}</p>
+			</hgroup>
 		</div>
 
-		{#await products}
-			<!-- products is pending -->
-			<span aria-busy="true" />
-		{:then value}
-			<!-- products was fulfilled -->
-			<div class="products-list">
-				{#each value?.pinned as { title, slug, data_product }}
-					<a href="/produits/{slug}">
-						<article>
-							<img
-								src=""
-								alt=""
-								sizes={data_product.featured.sizes}
-								srcset={data_product.featured.srcSet}
-							/>
-							<footer>
-								<h2>{title}</h2>
-								{#each data_product?.type as type}
-									<kbd> {type.name}</kbd>
-								{/each}
-							</footer>
-						</article>
-					</a>
-				{/each}
+		<ViewMore />
+	</section>
+
+	<!-- # DATA -->
+	<section id="data">
+		<div class="container flex:col">
+			<div class="title flex:col">
+				<h2>{products?.title}</h2>
+				<p>
+					{products?.intro}
+				</p>
 			</div>
-		{:catch error}
-			<!-- products was rejected -->
-			<pre>impossible de récupérer les projets</pre>
-		{/await}
 
-		<a href="/produits" class="mx:auto outline" role="button"> découvrir le reste</a>
-	</div>
-</section>
+			{#await products}
+				<!-- products is pending -->
+				<span aria-busy="true" />
+			{:then value}
+				<!-- products was fulfilled -->
+				<div class="products-list">
+					{#each value?.pinned as { title, slug, data_product }}
+						<a href="/produits/{slug}">
+							<article>
+								<img
+									src=""
+									alt=""
+									sizes={data_product.featured.sizes}
+									srcset={data_product.featured.srcSet}
+								/>
+								<footer>
+									<h2>{title}</h2>
+									{#each data_product?.type as type}
+										<kbd> {type.name}</kbd>
+									{/each}
+								</footer>
+							</article>
+						</a>
+					{/each}
+				</div>
+			{:catch error}
+				<!-- products was rejected -->
+				<pre>impossible de récupérer les projets</pre>
+			{/await}
 
-<!-- # A PROPOS -->
-<section id="about" class="container">
-	<span class="flex:col">
-		<h2>En quelques mots...</h2>
-		<!-- <pre>
-			{JSON.stringify($HomepageData.data.options?.optionsPage.about, undefined, 2)}
-		</pre> -->
-		<PanelWrapper content={about} />
-		<a class="mx:auto outline" role="button" href="/a-propos">En savoir plus</a>
-	</span>
-</section>
+			<a href="/produits" class="mx:auto outline" role="button"> découvrir le reste</a>
+		</div>
+	</section>
+
+	<!-- # A PROPOS -->
+	<section id="about" class="container">
+		<span class="flex:col">
+			<h2>En quelques mots...</h2>
+			<!-- <pre>
+				{JSON.stringify($HomepageData.data.options?.optionsPage.about, undefined, 2)}
+			</pre> -->
+			<PanelWrapper content={about} />
+			<a class="mx:auto outline" role="button" href="/a-propos">En savoir plus</a>
+		</span>
+	</section>
+{/if}
 
 <style lang="scss">
 	#hero {

@@ -11,9 +11,9 @@
 	<title>{$GetProductBySlug.data?.product?.title} | Studio.MDT</title>
 </svelte:head>
 
-<pre>
+<!-- <pre>
 			{JSON.stringify($GetProductBySlug, undefined, 2)}
-		</pre>
+		</pre> -->
 {#if product}
 	<section class="container">
 		{#if product.data_product?.hero}
