@@ -4695,7 +4695,7 @@ type Options_Optionspage implements AcfFieldGroup {
   about: [Options_Optionspage_about]
 
   """"""
-  ceramiques: [Options_Optionspage_ceramiques]
+  contacts: Options_Optionspage_Contacts
 
   """The name of the ACF Field Group"""
   fieldGroupName: String
@@ -4711,6 +4711,21 @@ type Options_Optionspage implements AcfFieldGroup {
 
   """"""
   resines: [Options_Optionspage_resines]
+}
+
+"""Field Group"""
+type Options_Optionspage_Contacts implements AcfFieldGroup {
+  """The name of the ACF Field Group"""
+  fieldGroupName: String
+
+  """"""
+  instagram: String
+
+  """"""
+  mail: String
+
+  """"""
+  phone: String
 }
 
 """Field Group"""
@@ -4761,21 +4776,6 @@ type Options_Optionspage_about implements AcfFieldGroup {
 
   """Visible sur la page d&#039;accueil"""
   title: String
-}
-
-"""Field Group"""
-type Options_Optionspage_ceramiques implements AcfFieldGroup {
-  """"""
-  color: String
-
-  """"""
-  description: String
-
-  """The name of the ACF Field Group"""
-  fieldGroupName: String
-
-  """"""
-  previewcolor: String
 }
 
 """Field Group"""
@@ -7742,6 +7742,12 @@ input ProductTypesNodeInput {
 """Field Group"""
 type Product_DataProduct implements AcfFieldGroup {
   """"""
+  delivery: Boolean
+
+  """"""
+  deliveryPrice: Float
+
+  """"""
   description: String
 
   """"""
@@ -7760,7 +7766,16 @@ type Product_DataProduct implements AcfFieldGroup {
   hero: MediaItem
 
   """"""
-  type: Type
+  price: Float
+
+  """"""
+  saleMention: String
+
+  """"""
+  selling: Boolean
+
+  """"""
+  type: [Type]
 }
 
 """The reading setting type"""

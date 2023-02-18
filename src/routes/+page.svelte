@@ -8,7 +8,9 @@
 	// pull the store reference from the route props
 	$: ({ HomepageData } = data);
 
-	import { news } from '$lib/news';
+	$: products = $HomepageData?.data?.options?.optionsPage?.products;
+	$: hero = $HomepageData?.data?.options?.optionsPage?.hero;
+	$: about = $HomepageData?.data?.options?.optionsPage?.about;
 	// $: console.log($HomepageData);
 </script>
 
@@ -22,15 +24,15 @@
 
 <!-- # HERO -->
 <section id="hero">
-	{#if $HomepageData.data?.options?.optionsPage?.hero?.img}
-		<img src={$HomepageData.data?.options?.optionsPage?.hero?.img.sourceUrl} alt="" />
+	{#if hero?.img}
+		<img src={hero?.img.sourceUrl} alt="" />
 	{/if}
 	<div class="overlay" />
 
 	<div class="container">
 		<hgroup>
-			<h1>{$HomepageData.data?.options?.optionsPage?.hero?.title}</h1>
-			<p>{$HomepageData.data?.options?.optionsPage?.hero?.subtitle}</p>
+			<h1>{hero?.title}</h1>
+			<p>{hero?.subtitle}</p>
 
 			<div class="container" />
 		</hgroup>
@@ -43,26 +45,26 @@
 <section id="data">
 	<div class="container flex:col">
 		<div class="title flex:col">
-			<h2>{$HomepageData.data?.options?.optionsPage?.products?.title}</h2>
+			<h2>{products?.title}</h2>
 			<p>
-				{$HomepageData.data?.options?.optionsPage?.products?.intro}
+				{products?.intro}
 			</p>
 		</div>
 
-		{#if !$HomepageData.fetching}
+		{#if !$HomepageData.fetching && products?.pinned}
 			<div class="products-list">
-				{#each $HomepageData.data?.options?.optionsPage?.products?.pinned as item}
-					<a href="/produits/{item.slug}">
+				{#each products?.pinned as { title, slug, data_product }}
+					<a href="/produits/{slug}">
 						<article>
 							<img
 								src=""
 								alt=""
-								sizes={item.data_product.featured.sizes}
-								srcset={item.data_product.featured.srcSet}
+								sizes={data_product.featured.sizes}
+								srcset={data_product.featured.srcSet}
 							/>
 							<footer>
-								<h2>{item.title}</h2>
-								<kbd>{item.data_product.type.name}</kbd>
+								<h2>{title}</h2>
+								<kbd>{data_product.type.name}</kbd>
 							</footer>
 						</article>
 					</a>
@@ -83,7 +85,7 @@
 		<!-- <pre>
 			{JSON.stringify($HomepageData.data.options?.optionsPage.about, undefined, 2)}
 		</pre> -->
-		<PanelWrapper content={$HomepageData.data.options?.optionsPage.about} />
+		<PanelWrapper content={about} />
 		<a class="mx:auto outline" role="button" href="/a-propos">En savoir plus</a>
 	</span>
 </section>
@@ -94,7 +96,8 @@
 		overflow: hidden;
 		height: 100vh;
 		display: flex;
-		align-items: center;
+		align-items: end;
+		padding-bottom: 5rem;
 		margin-top: calc(var(--header-height) * -1);
 		margin-bottom: 0;
 
@@ -103,13 +106,20 @@
 		}
 
 		.overlay {
-			background-color: var(--dropdown-hover-background-color);
+			// background-color: var(--dropdown-hover-background-color);
+			background-image: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0) 0%,
+				rgba(0, 0, 0, 0) 55%,
+				var(--form-element-background-color) 100%
+			);
+			// mix-blend-mode: darken;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			position: absolute;
 			top: 0;
-			opacity: 0;
+			opacity: 0.5;
 			transition: opacity 250ms ease-out;
 		}
 
