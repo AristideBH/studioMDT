@@ -2192,6 +2192,9 @@ input CreateTypeInput {
   """The name of the products_cat object to mutate"""
   name: String!
 
+  """The ID of the products_cat that should be set as the parent"""
+  parentId: ID
+
   """
   If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.
   """
@@ -7742,6 +7745,9 @@ input ProductTypesNodeInput {
 """Field Group"""
 type Product_DataProduct implements AcfFieldGroup {
   """"""
+  aspects: [TermObjectUnion]
+
+  """"""
   delivery: Boolean
 
   """"""
@@ -11318,6 +11324,9 @@ type TermNodeToEnqueuedStylesheetConnectionEdge implements Edge & EnqueuedStyles
   node: EnqueuedStylesheet!
 }
 
+"""Union between the Category, Tag and PostFormatPost types"""
+union TermObjectUnion = Category | PostFormat | Tag | Type
+
 """Options for ordering the connection by"""
 enum TermObjectsConnectionOrderbyEnum {
   """Order the connection by item count."""
@@ -11419,7 +11428,50 @@ interface ThemeConnectionEdge implements Edge {
 }
 
 """The type type"""
-type Type implements DatabaseIdentifier & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable {
+type Type implements DatabaseIdentifier & HierarchicalNode & HierarchicalTermNode & MenuItemLinkable & Node & TermNode & UniformResourceIdentifiable {
+  """
+  The ancestors of the node. Default ordered as lowest (closest to the child) to highest (closest to the root).
+  """
+  ancestors(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+  ): TypeToAncestorsTypeConnection
+
+  """Connection between the type type and its children types."""
+  children(
+    """
+    Cursor used along with the "first" argument to reference where in the dataset to get data
+    """
+    after: String
+
+    """
+    Cursor used along with the "last" argument to reference where in the dataset to get data
+    """
+    before: String
+
+    """The number of items to return after the referenced "after" cursor"""
+    first: Int
+
+    """The number of items to return before the referenced "before" cursor"""
+    last: Int
+
+    """Arguments for filtering the connection"""
+    where: TypeToTypeConnectionWhereArgs
+  ): TypeToTypeConnection
+
   """Connection between the Type type and the ContentNode type"""
   contentNodes(
     """
@@ -11507,6 +11559,15 @@ type Type implements DatabaseIdentifier & MenuItemLinkable & Node & TermNode & U
   """The human friendly name of the object."""
   name: String
 
+  """Connection between the type type and its parent type."""
+  parent: TypeToParentTypeConnectionEdge
+
+  """Database id of the parent node"""
+  parentDatabaseId: Int
+
+  """The globally unique identifier of the parent node."""
+  parentId: ID
+
   """Connection between the Type type and the product type"""
   products(
     """
@@ -11591,6 +11652,27 @@ enum TypeIdType {
   URI
 }
 
+"""Connection between the Type type and the type type"""
+type TypeToAncestorsTypeConnection implements Connection & TypeConnection {
+  """Edges for the TypeToAncestorsTypeConnection connection"""
+  edges: [TypeToAncestorsTypeConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [Type!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: WPPageInfo
+}
+
+"""An edge in a connection"""
+type TypeToAncestorsTypeConnectionEdge implements Edge & TypeConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String
+
+  """The item at the end of the edge"""
+  node: Type!
+}
+
 """Connection between the Type type and the ContentNode type"""
 type TypeToContentNodeConnection implements Connection & ContentNodeConnection {
   """Edges for the TypeToContentNodeConnection connection"""
@@ -11672,6 +11754,17 @@ input TypeToContentNodeConnectionWhereArgs {
 
   """Title of the object"""
   title: String
+}
+
+"""Connection between the Type type and the type type"""
+type TypeToParentTypeConnectionEdge implements Edge & OneToOneConnection & TypeConnectionEdge {
+  """
+  Opaque reference to the nodes position in the connection. Value can be used with pagination args.
+  """
+  cursor: String
+
+  """The node of the connection, without the edges"""
+  node: Type!
 }
 
 """Connection between the Type type and the product type"""
@@ -11763,6 +11856,115 @@ type TypeToTaxonomyConnectionEdge implements Edge & OneToOneConnection & Taxonom
 
   """The node of the connection, without the edges"""
   node: Taxonomy!
+}
+
+"""Connection between the Type type and the type type"""
+type TypeToTypeConnection implements Connection & TypeConnection {
+  """Edges for the TypeToTypeConnection connection"""
+  edges: [TypeToTypeConnectionEdge!]!
+
+  """The nodes of the connection, without the edges"""
+  nodes: [Type!]!
+
+  """Information about pagination in a connection."""
+  pageInfo: WPPageInfo
+}
+
+"""An edge in a connection"""
+type TypeToTypeConnectionEdge implements Edge & TypeConnectionEdge {
+  """A cursor for use in pagination"""
+  cursor: String
+
+  """The item at the end of the edge"""
+  node: Type!
+}
+
+"""Arguments for filtering the TypeToTypeConnection connection"""
+input TypeToTypeConnectionWhereArgs {
+  """
+  Unique cache key to be produced when this query is stored in an object cache. Default is 'core'.
+  """
+  cacheDomain: String
+
+  """
+  Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0.
+  """
+  childOf: Int
+
+  """
+  True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false.
+  """
+  childless: Boolean
+
+  """
+  Retrieve terms where the description is LIKE the input value. Default empty.
+  """
+  descriptionLike: String
+
+  """
+  Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array.
+  """
+  exclude: [ID]
+
+  """
+  Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array.
+  """
+  excludeTree: [ID]
+
+  """
+  Whether to hide terms not assigned to any posts. Accepts true or false. Default false
+  """
+  hideEmpty: Boolean
+
+  """
+  Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true.
+  """
+  hierarchical: Boolean
+
+  """Array of term ids to include. Default empty array."""
+  include: [ID]
+
+  """Array of names to return term(s) for. Default empty."""
+  name: [String]
+
+  """Retrieve terms where the name is LIKE the input value. Default empty."""
+  nameLike: String
+
+  """
+  Array of object IDs. Results will be limited to terms associated with these objects.
+  """
+  objectIds: [ID]
+
+  """Direction the connection should be ordered in"""
+  order: OrderEnum
+
+  """Field(s) to order terms by. Defaults to 'name'."""
+  orderby: TermObjectsConnectionOrderbyEnum
+
+  """
+  Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false.
+  """
+  padCounts: Boolean
+
+  """Parent term ID to retrieve direct-child terms of. Default empty."""
+  parent: Int
+
+  """
+  Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty.
+  """
+  search: String
+
+  """Array of slugs to return term(s) for. Default empty."""
+  slug: [String]
+
+  """Array of term taxonomy IDs, to match when querying terms."""
+  termTaxonomId: [ID]
+
+  """Array of term taxonomy IDs, to match when querying terms."""
+  termTaxonomyId: [ID]
+
+  """Whether to prime meta caches for matched terms. Default true."""
+  updateTermMetaCache: Boolean
 }
 
 """Any node that has a URI"""
@@ -12307,6 +12509,9 @@ input UpdateTypeInput {
 
   """The name of the products_cat object to mutate"""
   name: String
+
+  """The ID of the products_cat that should be set as the parent"""
+  parentId: ID
 
   """
   If this argument exists then the slug will be checked to see if it is not an existing valid term. If that check succeeds (it is not a valid term), then it is added and the term id is given. If it fails, then a check is made to whether the taxonomy is hierarchical and the parent argument is not empty. If the second check succeeds, the term will be inserted and the term id will be given. If the slug argument is empty, then it will be calculated from the term name.

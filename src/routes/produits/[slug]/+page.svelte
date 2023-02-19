@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$houdini';
-
+	import Carousel from '$lib/components/items/Carousel.svelte';
 	export let data: PageData;
 	$: ({ GetProductBySlug } = data);
 
@@ -46,13 +46,14 @@
 			</div>
 			{#if product.data_product?.gallery}
 				<footer>
-					<ul class="gallery autoGrid">
+					<Carousel data={product.data_product?.gallery} />
+					<!-- <ul class="gallery autoGrid">
 						{#each product.data_product?.gallery as item}
 							<li>
 								<img src={item.sourceUrl} alt={item.altText} srcset={item.srcSet} />
 							</li>
 						{/each}
-					</ul>
+					</ul> -->
 				</footer>
 			{/if}
 		</article>

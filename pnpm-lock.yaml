@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@picocss/pico': ^1.5.7
+  '@splidejs/svelte-splide': ^0.2.9
   '@sveltejs/adapter-auto': ^2.0.0
   '@sveltejs/kit': ^1.7.2
   '@threlte/core': ^5.0.9
@@ -25,6 +26,7 @@ specifiers:
   svelte-inview: ^3.0.2
   svelte-sequential-preprocessor: ^0.0.7
   svrollbar: ^0.12.0
+  swiper: ^9.0.5
   three: ^0.149.0
   tslib: ^2.5.0
   typescript: ^4.9.5
@@ -32,9 +34,11 @@ specifiers:
 
 dependencies:
   '@picocss/pico': 1.5.7
+  '@splidejs/svelte-splide': 0.2.9
   iconify-icon: 1.0.5
   svelte-inview: 3.0.2_svelte@3.55.1
   svrollbar: 0.12.0
+  swiper: 9.0.5
 
 devDependencies:
   '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.7.2
@@ -424,6 +428,16 @@ packages:
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
+
+  /@splidejs/splide/4.1.4:
+    resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
+    dev: false
+
+  /@splidejs/svelte-splide/0.2.9:
+    resolution: {integrity: sha512-04ekJnDIJKEAhklKQMhkg4Yx0Ihtkk18eA9JeHPON0lDTngQxlOYdEYTJWH2UON45VxmVqoLHv04I++JphO36w==}
+    dependencies:
+      '@splidejs/splide': 4.1.4
+    dev: false
 
   /@sveltejs/adapter-auto/2.0.0_@sveltejs+kit@1.7.2:
     resolution: {integrity: sha512-b+gkHFZgD771kgV3aO4avHFd7y1zhmMYy9i6xOK7m/rwmwaRO8gnF5zBc0Rgca80B2PMU1bKNxyBTHA14OzUAQ==}
@@ -2100,6 +2114,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
+  /ssr-window/4.0.2:
+    resolution: {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==}
+    dev: false
+
   /streamsearch/1.1.0:
     resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
     engines: {node: '>=10.0.0'}
@@ -2248,6 +2266,13 @@ packages:
 
   /svrollbar/0.12.0:
     resolution: {integrity: sha512-okH0sz8bGtw+tgOfN1mpEtbveifxROcE3mbUMBJ1RQz8Q+1rVr+nVG7EAJ9b0G80cGDu7dskjAWuzj3iru0k5g==}
+    dev: false
+
+  /swiper/9.0.5:
+    resolution: {integrity: sha512-UiLQ5fvn8L3ZZpaPa+9oiwKwhVGQt5TVc0UuXxFKHyTQe8g2E3vbPMiMfIGb6NhNGj5ntsSDyyNgg4qVmWlJkQ==}
+    engines: {node: '>= 4.7.0'}
+    dependencies:
+      ssr-window: 4.0.2
     dev: false
 
   /text-table/0.2.0:
